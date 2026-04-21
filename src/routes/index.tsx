@@ -107,7 +107,7 @@ function HomePage() {
       <section className="relative">
         <div className="relative w-full">
           <div className="relative overflow-hidden">
-            <div className="relative h-[100svh] min-h-[560px] w-full">
+            <div className="relative h-[82svh] min-h-[500px] w-full sm:h-[100svh] sm:min-h-[560px]">
               {slides.map((s, i) => (
                 <div
                   key={i}
@@ -133,14 +133,14 @@ function HomePage() {
                       s.align === "left" ? "sm:items-center sm:justify-start" : "sm:items-center sm:justify-end"
                     }`}
                   >
-                    <div className="w-full max-w-xl p-6 sm:p-12 lg:p-16 text-background">
+                    <div className="w-full max-w-xl p-5 pb-8 sm:p-12 lg:p-16 text-background">
                       {i === active && (
                         <>
                           <span className="inline-flex items-center gap-1.5 rounded-full bg-background/95 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-foreground animate-pop-in">
                             <Sparkles className="h-3 w-3" /> {s.eyebrow}
                           </span>
                           <h1
-                            className="mt-5 font-display text-5xl leading-[0.95] sm:text-6xl lg:text-[5.5rem] animate-fade-up"
+                            className="mt-4 font-display text-4xl leading-[0.98] sm:mt-5 sm:text-6xl sm:leading-[0.95] lg:text-[5.5rem] animate-fade-up"
                             style={{ animationDelay: "0.1s" }}
                           >
                             {s.titleA}
@@ -148,14 +148,14 @@ function HomePage() {
                             <em className="font-italic-display">{s.titleB}</em>
                           </h1>
                           <p
-                            className="mt-5 max-w-md text-base font-medium text-background/95 sm:text-lg animate-fade-up"
+                            className="mt-4 max-w-md text-sm font-medium text-background/95 sm:mt-5 sm:text-lg animate-fade-up"
                             style={{ animationDelay: "0.25s" }}
                           >
                             {s.subtitle}
                           </p>
                           <Link
                             to={s.to}
-                            className="mt-7 inline-flex items-center gap-2 rounded-full bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-pop transition-all hover:bg-foreground hover:text-background animate-fade-up"
+                            className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-pop transition-all hover:bg-foreground hover:text-background sm:mt-7 sm:px-7 sm:py-3.5 animate-fade-up"
                             style={{ animationDelay: "0.4s" }}
                           >
                             {s.cta} <ArrowRight className="h-4 w-4" />
@@ -222,11 +222,11 @@ function HomePage() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">Shop by category</p>
-            <h2 className="mt-2 font-display text-5xl sm:text-6xl">
+            <h2 className="mt-2 font-display text-4xl sm:text-6xl">
               Tiny <em className="font-italic-display">categories</em>
             </h2>
           </div>
@@ -266,11 +266,11 @@ function HomePage() {
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">Just dropped</p>
-            <h2 className="mt-2 font-display text-5xl sm:text-6xl">
+            <h2 className="mt-2 font-display text-4xl sm:text-6xl">
               New <em className="font-italic-display">favourites</em>
             </h2>
           </div>
@@ -278,7 +278,7 @@ function HomePage() {
             Shop all <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {products.slice(0, 8).map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}
@@ -286,7 +286,7 @@ function HomePage() {
       </section>
 
       {/* MARQUEE */}
-      <section className="mt-24 overflow-hidden border-y border-foreground/10 bg-foreground py-5 text-background">
+      <section className="mt-16 overflow-hidden border-y border-foreground/10 bg-foreground py-5 text-background sm:mt-24">
         <div className="flex animate-marquee whitespace-nowrap font-display text-3xl tracking-tight sm:text-4xl">
           {[...Array(2)].map((_, j) => (
             <div key={j} className="flex shrink-0 items-center gap-10 pr-10">
@@ -302,17 +302,17 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-3xl bg-gradient-warm p-10 text-center sm:p-16">
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-3xl bg-gradient-warm p-7 text-center sm:p-16">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-foreground/60">Join the tribe</p>
-          <h2 className="mt-3 font-display text-5xl sm:text-6xl">
+          <h2 className="mt-3 font-display text-3xl sm:text-6xl">
             Be the first to know about <em className="font-italic-display">new drops</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base font-medium text-foreground/75">
             Sign up for early access, exclusive sales and 10% off your first order.
           </p>
           <form
-            className="mx-auto mt-7 flex max-w-md gap-2"
+            className="mx-auto mt-7 flex w-full max-w-md flex-col gap-2 sm:flex-row"
             onSubmit={(e) => {
               e.preventDefault();
               if (!email.trim()) return;

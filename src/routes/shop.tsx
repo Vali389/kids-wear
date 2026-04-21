@@ -45,10 +45,10 @@ function ShopPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="text-center">
         <p className="font-display text-sm font-bold uppercase tracking-widest text-berry">Collection</p>
-        <h1 className="mt-1 font-display text-4xl font-bold sm:text-5xl">Shop everything</h1>
+        <h1 className="mt-1 font-display text-3xl font-bold sm:text-5xl">Shop everything</h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
           {filtered.length} happy {filtered.length === 1 ? "piece" : "pieces"} ready to play.
         </p>
@@ -84,13 +84,13 @@ function ShopPage() {
       </form>
 
       {/* Filter chips */}
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
         <div className="flex flex-wrap gap-2">
           {cats.map((c) => (
             <button
               key={c.value}
               onClick={() => setCat(c.value)}
-              className={`rounded-full px-4 py-2 text-sm font-bold transition-all ${
+              className={`rounded-full px-3.5 py-2 text-sm font-bold transition-all sm:px-4 ${
                 cat === c.value
                   ? "bg-berry text-berry-foreground shadow-pop"
                   : "bg-card text-foreground hover:bg-accent"
@@ -100,12 +100,12 @@ function ShopPage() {
             </button>
           ))}
         </div>
-        <label className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm">
+        <label className="inline-flex w-full items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm sm:w-auto sm:py-1.5">
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as typeof sort)}
-            className="bg-transparent text-sm font-bold outline-none"
+            className="w-full bg-transparent text-sm font-bold outline-none sm:w-auto"
           >
             <option value="new">Newest</option>
             <option value="lo">Price: low → high</option>
@@ -131,7 +131,7 @@ function ShopPage() {
           </Link>
         </div>
       ) : (
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {filtered.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}

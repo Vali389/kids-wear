@@ -53,7 +53,7 @@ export function Navbar() {
     >
       {/* Promo bar */}
       <div className="bg-foreground text-background">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-[11px] font-medium tracking-wide">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-3 py-2 text-center text-[10px] font-medium leading-relaxed tracking-wide sm:text-[11px]">
           Free shipping on orders over ₹999 · Use code{" "}
           <span className="rounded-full bg-background/15 px-2 py-0.5 font-semibold">TINY10</span>{" "}
           for 10% off
