@@ -7,16 +7,19 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
     product.mrp > product.price
       ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
       : 0;
+  const categoryLabel =
+    product.category.charAt(0).toUpperCase() + product.category.slice(1);
 
   return (
     <Link
       to="/product/$slug"
       params={{ slug: product.slug }}
-      className="group relative block animate-fade-up"
+      className="group relative block animate-fade-up focus-visible:outline-none"
       style={{ animationDelay: `${index * 60}ms` }}
     >
+      <article className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-pop group-focus-visible:ring-2 group-focus-visible:ring-primary/60">
       <div
-        className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-cream"
+        className="relative aspect-[4/5] overflow-hidden bg-cream"
         style={{ backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))` }}
       >
         <img
@@ -35,15 +38,18 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         )}
 
         {/* Top badges */}
-        <div className="absolute left-3 top-3 flex flex-col gap-1.5">
+        <div className="absolute left-3 top-3 flex flex-wrap items-center gap-1.5">
+          <span className="rounded-full bg-background/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">
+            {categoryLabel}
+          </span>
           {product.badge && (
-            <span className="rounded-full bg-foreground px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-background">
+            <span className="rounded-full bg-foreground px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-background">
               {product.badge}
             </span>
           )}
           {discount > 0 && (
-            <span className="rounded-full bg-berry px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-berry-foreground">
-              -{discount}%
+            <span className="rounded-full bg-berry px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-berry-foreground">
+              Save {discount}%
             </span>
           )}
         </div>
@@ -54,26 +60,34 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         </div>
       </div>
 
-      <div className="mt-3 flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <h3 className="truncate font-body text-sm font-semibold text-foreground">
+      <div className="space-y-1.5 px-3.5 pb-3.5 pt-3">
+        {product.tag ? (
+          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+            {product.tag}
+          </p>
+        ) : null}
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
+          <h3 className="line-clamp-1 font-body text-sm font-semibold text-foreground sm:text-[15px]">
             {product.name}
           </h3>
-          <p className="mt-0.5 truncate text-xs text-muted-foreground">
+          <p className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">
             {product.shortDescription}
           </p>
         </div>
         <div className="shrink-0 text-right">
-          <p className="font-body text-sm font-bold text-foreground">
+          <p className="font-body text-base font-semibold text-foreground">
             ₹{product.price.toLocaleString("en-IN")}
           </p>
           {product.mrp > product.price && (
-            <p className="text-[11px] text-muted-foreground line-through">
+            <p className="text-[11px] font-medium text-muted-foreground line-through">
               ₹{product.mrp.toLocaleString("en-IN")}
             </p>
           )}
         </div>
       </div>
+      </div>
+      </article>
     </Link>
   );
 }

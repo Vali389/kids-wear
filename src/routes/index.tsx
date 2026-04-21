@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { ArrowRight, ArrowLeft, Sparkles, Truck, ShieldCheck, RotateCcw, Leaf } from "lucide-react";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
@@ -90,6 +91,7 @@ const slides = [
 
 function HomePage() {
   const [active, setActive] = useState(0);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const id = setInterval(() => setActive((a) => (a + 1) % slides.length), 6500);
@@ -309,10 +311,21 @@ function HomePage() {
           <p className="mx-auto mt-4 max-w-xl text-base font-medium text-foreground/75">
             Sign up for early access, exclusive sales and 10% off your first order.
           </p>
-          <form className="mx-auto mt-7 flex max-w-md gap-2">
+          <form
+            className="mx-auto mt-7 flex max-w-md gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!email.trim()) return;
+              toast.success("You're subscribed. Welcome to Tinytots updates!");
+              setEmail("");
+            }}
+          >
             <input
               type="email"
               placeholder="you@happy.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               className="flex-1 rounded-full border border-border bg-background px-5 py-3.5 text-sm font-medium outline-none focus:border-berry focus:ring-2 focus:ring-berry/20"
             />
             <button

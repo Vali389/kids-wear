@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Heart, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-border/60 bg-card">
       <div className="bg-gradient-rainbow h-2 w-full" />
@@ -15,7 +19,9 @@ export function Footer() {
           </p>
           <div className="flex gap-2">
             <a
-              href="#"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-berry hover:text-berry-foreground"
               aria-label="Instagram"
             >
@@ -44,8 +50,11 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li><Link to="/about" className="hover:text-foreground">About us</Link></li>
             <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
+            <li><Link to="/privacy" className="hover:text-foreground">Privacy policy</Link></li>
+            <li><Link to="/terms" className="hover:text-foreground">Terms & conditions</Link></li>
+            <li><Link to="/shipping-returns" className="hover:text-foreground">Shipping & returns</Link></li>
             <li><Link to="/login" className="hover:text-foreground">Login</Link></li>
-            <li><Link to="/signup" className="hover:text-foreground">Sign up</Link></li>
+            <li><Link to="/signup" className="hover:text-foreground">Create account</Link></li>
           </ul>
         </div>
         <div>
@@ -53,10 +62,21 @@ export function Footer() {
           <p className="mt-3 text-sm text-muted-foreground">
             New drops, sales and the cutest news — straight to your inbox.
           </p>
-          <form className="mt-3 flex gap-2">
+          <form
+            className="mt-3 flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!email.trim()) return;
+              toast.success("Thanks for subscribing! We'll keep you posted.");
+              setEmail("");
+            }}
+          >
             <input
               type="email"
               placeholder="you@happy.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               className="flex-1 rounded-full border border-border bg-background px-4 py-2.5 text-sm outline-none focus:border-berry"
             />
             <button

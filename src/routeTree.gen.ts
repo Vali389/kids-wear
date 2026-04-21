@@ -9,8 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ShippingReturnsRouteImport } from './routes/shipping-returns'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -21,6 +24,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -29,6 +37,16 @@ const SignupRoute = SignupRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingReturnsRoute = ShippingReturnsRouteImport.update({
+  id: '/shipping-returns',
+  path: '/shipping-returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -86,8 +104,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/girls': typeof GirlsRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
@@ -99,8 +120,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/girls': typeof GirlsRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesById {
@@ -113,8 +137,11 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/girls': typeof GirlsRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRouteTypes {
@@ -128,8 +155,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/girls'
     | '/login'
+    | '/privacy'
+    | '/shipping-returns'
     | '/shop'
     | '/signup'
+    | '/terms'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -141,8 +171,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/girls'
     | '/login'
+    | '/privacy'
+    | '/shipping-returns'
     | '/shop'
     | '/signup'
+    | '/terms'
     | '/product/$slug'
   id:
     | '__root__'
@@ -154,8 +187,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/girls'
     | '/login'
+    | '/privacy'
+    | '/shipping-returns'
     | '/shop'
     | '/signup'
+    | '/terms'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -168,13 +204,23 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GirlsRoute: typeof GirlsRoute
   LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ShippingReturnsRoute: typeof ShippingReturnsRoute
   ShopRoute: typeof ShopRoute
   SignupRoute: typeof SignupRoute
+  TermsRoute: typeof TermsRoute
   ProductSlugRoute: typeof ProductSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -187,6 +233,20 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping-returns': {
+      id: '/shipping-returns'
+      path: '/shipping-returns'
+      fullPath: '/shipping-returns'
+      preLoaderRoute: typeof ShippingReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -264,8 +324,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GirlsRoute: GirlsRoute,
   LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  ShippingReturnsRoute: ShippingReturnsRoute,
   ShopRoute: ShopRoute,
   SignupRoute: SignupRoute,
+  TermsRoute: TermsRoute,
   ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
