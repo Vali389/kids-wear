@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { FloatingActions } from "@/components/FloatingActions";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 import appCss from "../styles.css?url";
 
@@ -73,7 +74,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <>
+    <TooltipProvider delayDuration={200}>
       <Navbar />
       <main className="min-h-[60vh]">
         <Outlet />
@@ -82,6 +83,6 @@ function RootComponent() {
       <CartDrawer />
       <FloatingActions />
       <Toaster position="top-center" richColors />
-    </>
+    </TooltipProvider>
   );
 }
