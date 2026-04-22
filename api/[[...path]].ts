@@ -1,5 +1,5 @@
 export const config = {
-  runtime: "edge",
+  runtime: "nodejs",
 };
 
 export { default } from "@tanstack/react-start/server-entry";
