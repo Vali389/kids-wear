@@ -47,7 +47,6 @@ const slides = [
     to: "/shop",
     bg: "var(--peach)",
     align: "left" as const,
-    anim: "animate-kenburns-in",
   },
   {
     image: heroGirls1,
@@ -60,7 +59,6 @@ const slides = [
     to: "/girls",
     bg: "var(--lavender)",
     align: "right" as const,
-    anim: "animate-kenburns-out",
   },
   {
     image: heroGirls2,
@@ -72,7 +70,6 @@ const slides = [
     to: "/shop",
     bg: "var(--mint)",
     align: "left" as const,
-    anim: "animate-kenburns-in",
   },
   {
     image: heroGirls3,
@@ -84,7 +81,6 @@ const slides = [
     to: "/shop",
     bg: "var(--peach)",
     align: "right" as const,
-    anim: "animate-kenburns-out",
   },
   {
     image: heroHome4,
@@ -97,7 +93,6 @@ const slides = [
     to: "/contact",
     bg: "var(--sky)",
     align: "left" as const,
-    anim: "animate-kenburns-in",
   },
   {
     image: heroHome3,
@@ -109,7 +104,6 @@ const slides = [
     to: "/about",
     bg: "var(--sunshine)",
     align: "right" as const,
-    anim: "animate-kenburns-out",
   },
 ];
 
@@ -127,70 +121,70 @@ function HomePage() {
 
   return (
     <div>
-      {/* HERO CAROUSEL */}
-      <section className="relative">
-        <div className="relative w-full">
-          <div className="relative overflow-hidden">
-            <div className="relative h-[82svh] min-h-[500px] w-full sm:h-[100svh] sm:min-h-[560px]">
-              {slides.map((s, i) => (
+      {/* HERO CAROUSEL — full viewport WIDTH (breakout); height unchanged; object-contain = whole photo visible (tint in letterboxing) */}
+      <section className="relative left-1/2 w-[100dvw] max-w-[100dvw] -translate-x-1/2 overflow-x-hidden">
+        <div className="relative w-full max-w-none">
+          <div className="relative h-[min(48svh,420px)] w-full min-h-[300px] overflow-hidden sm:h-[min(50svh,460px)] sm:min-h-[320px] md:h-[min(52svh,500px)]">
+            {slides.map((s, i) => (
+              <div
+                key={i}
+                className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                  i === active ? "z-[1] opacity-100" : "pointer-events-none z-0 opacity-0"
+                }`}
+                style={{ backgroundColor: `color-mix(in oklab, ${s.bg} 22%, var(--cream))` }}
+                aria-hidden={i !== active}
+              >
+                <img
+                  src={s.image}
+                  alt={`${s.titleA} ${s.titleB}`}
+                  className="absolute inset-0 z-[1] h-full w-full max-w-none object-contain object-center"
+                  draggable={false}
+                />
                 <div
-                  key={i}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    i === active ? "opacity-100" : "opacity-0 pointer-events-none"
+                  className={`pointer-events-none absolute inset-0 z-[2] ${
+                    s.align === "left"
+                      ? "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-r sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
+                      : "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-l sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
                   }`}
-                  style={{ backgroundColor: `color-mix(in oklab, ${s.bg} 25%, var(--cream))` }}
+                />
+                <div
+                  className={`absolute inset-0 z-[3] flex items-end ${
+                    s.align === "left" ? "sm:items-center sm:justify-start" : "sm:items-center sm:justify-end"
+                  }`}
                 >
-                  <img
-                    src={s.image}
-                    alt={`${s.titleA} ${s.titleB}`}
-                    className={`h-full w-full object-cover ${i === active ? s.anim : ""}`}
-                  />
-                  <div
-                    className={`absolute inset-0 ${
-                      s.align === "left"
-                        ? "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-r sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
-                        : "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-l sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
-                    }`}
-                  />
-                  <div
-                    className={`absolute inset-0 flex items-end ${
-                      s.align === "left" ? "sm:items-center sm:justify-start" : "sm:items-center sm:justify-end"
-                    }`}
-                  >
-                    <div className="w-full max-w-xl p-5 pb-8 sm:p-12 lg:p-16 text-background">
-                      {i === active && (
-                        <>
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-background/95 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-foreground animate-pop-in">
-                            <Sparkles className="h-3 w-3" /> {s.eyebrow}
-                          </span>
-                          <h1
-                            className="mt-4 font-display text-4xl leading-[0.98] sm:mt-5 sm:text-6xl sm:leading-[0.95] lg:text-[5.5rem] animate-fade-up"
-                            style={{ animationDelay: "0.1s" }}
-                          >
-                            {s.titleA}
-                            <br />
-                            <em className="font-italic-display">{s.titleB}</em>
-                          </h1>
-                          <p
-                            className="mt-4 max-w-md text-sm font-medium text-background/95 sm:mt-5 sm:text-lg animate-fade-up"
-                            style={{ animationDelay: "0.25s" }}
-                          >
-                            {s.subtitle}
-                          </p>
-                          <Link
-                            to={s.to}
-                            className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-pop transition-all hover:bg-foreground hover:text-background sm:mt-7 sm:px-7 sm:py-3.5 animate-fade-up"
-                            style={{ animationDelay: "0.4s" }}
-                          >
-                            {s.cta} <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </>
-                      )}
-                    </div>
+                  <div className="w-full max-w-xl p-5 pb-10 sm:p-9 sm:pb-9 lg:p-12 lg:pb-11 text-background">
+                    {i === active ? (
+                      <>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/95 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-foreground animate-pop-in">
+                          <Sparkles className="h-3 w-3" /> {s.eyebrow}
+                        </span>
+                        <h1
+                          className="mt-4 font-display text-4xl leading-[0.98] sm:mt-5 sm:text-5xl sm:leading-[0.95] lg:text-[4.5rem] animate-fade-up"
+                          style={{ animationDelay: "0.1s" }}
+                        >
+                          {s.titleA}
+                          <br />
+                          <em className="font-italic-display">{s.titleB}</em>
+                        </h1>
+                        <p
+                          className="mt-4 max-w-md text-sm font-medium text-background/95 sm:mt-5 sm:text-base animate-fade-up"
+                          style={{ animationDelay: "0.25s" }}
+                        >
+                          {s.subtitle}
+                        </p>
+                        <Link
+                          to={s.to}
+                          className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-pop transition-all hover:bg-foreground hover:text-background sm:mt-7 animate-fade-up"
+                          style={{ animationDelay: "0.4s" }}
+                        >
+                          {s.cta} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </>
+                    ) : null}
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
 
             <button
               onClick={goPrev}
@@ -284,14 +278,14 @@ function HomePage() {
             <Link
               key={c.title}
               to={c.to}
-              className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+              className="group relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl"
               style={{ backgroundColor: `color-mix(in oklab, ${c.color} 25%, var(--cream))` }}
             >
               <img
                 src={c.image}
                 alt={c.title}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="h-full max-h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent p-6 text-background">
                 <h3 className="font-display text-4xl">{c.title}</h3>

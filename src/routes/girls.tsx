@@ -56,8 +56,8 @@ export function CategoryPage({
               <h1 className="mt-2 font-display text-5xl font-bold leading-none sm:text-6xl">{title}</h1>
               <p className="mt-3 max-w-md text-base font-semibold text-foreground/80">{subtitle}</p>
             </div>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-              <img src={image} alt={title} className="h-full w-full object-cover animate-kenburns-in" />
+            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-background/55">
+              <img src={image} alt={title} className="max-h-full w-full object-contain" />
             </div>
           </div>
         </div>

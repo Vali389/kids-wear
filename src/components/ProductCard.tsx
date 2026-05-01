@@ -98,7 +98,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       >
         <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-pop">
           <div
-            className="relative aspect-[4/5] overflow-hidden bg-cream"
+            className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-cream"
             style={{
               backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))`,
             }}
@@ -113,14 +113,14 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               src={product.images[0]}
               alt=""
               loading="lazy"
-              className="relative z-[1] h-full w-full object-cover pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105"
+              className="relative z-[1] h-full max-h-full w-full object-contain p-1 pointer-events-none transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
             {product.images[1] && (
               <img
                 src={product.images[1]}
                 alt=""
                 loading="lazy"
-                className="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 z-[1] h-full max-h-full w-full object-contain p-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             )}
 
@@ -203,7 +203,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         <DialogContent className="max-w-md gap-0 overflow-hidden p-0 sm:max-w-lg">
           <div className="grid sm:grid-cols-2">
             <div
-              className="relative aspect-[4/5] sm:aspect-auto sm:min-h-[280px]"
+              className="relative flex aspect-[4/5] items-center justify-center sm:aspect-auto sm:min-h-[280px]"
               style={{
                 backgroundColor: `color-mix(in oklab, ${product.colorChip} 15%, var(--cream))`,
               }}
@@ -211,7 +211,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               <img
                 src={product.images[0]}
                 alt={product.name}
-                className="h-full w-full object-cover"
+                className="max-h-full w-full object-contain"
               />
             </div>
             <div className="flex flex-col justify-center gap-3 p-6">

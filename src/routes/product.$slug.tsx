@@ -83,13 +83,13 @@ function ProductPage() {
         {/* GALLERY */}
         <div className="flex flex-col gap-3">
           <div
-            className="relative aspect-[4/5] overflow-hidden rounded-2xl"
+            className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl"
             style={{ backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))` }}
           >
             <img
               src={product.images[activeImage]}
               alt={product.name}
-              className="h-full w-full object-cover animate-fade-in"
+              className="max-h-full w-full object-contain p-2 animate-fade-in"
               key={activeImage}
             />
             {product.badge && (
@@ -110,7 +110,7 @@ function ProductPage() {
               <button
                 key={i}
                 onClick={() => setActiveImage(i)}
-                className={`relative aspect-square overflow-hidden rounded-xl transition-all ${
+                className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-xl transition-all ${
                   i === activeImage
                     ? "ring-2 ring-foreground ring-offset-2 ring-offset-background"
                     : "opacity-65 hover:opacity-100"
@@ -118,7 +118,7 @@ function ProductPage() {
                 style={{ backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))` }}
                 aria-label={`View image ${i + 1}`}
               >
-                <img src={img} alt="" className="h-full w-full object-cover" />
+                <img src={img} alt="" className="max-h-full w-full object-contain p-1" />
               </button>
             ))}
           </div>
