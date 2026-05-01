@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Tinytots — Modern editorial kids wear design system */
+/* Kathyayani Kids Wear — party & festive girls wear design tokens */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

@@ -6,8 +6,8 @@ import { Logo } from "@/components/Logo";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Login — Tinytots" },
-      { name: "description", content: "Sign in to your Tinytots account." },
+      { title: "Login — Kathyayani Kids Wear" },
+      { name: "description", content: "Sign in to your Kathyayani Kids Wear account." },
     ],
   }),
   component: LoginPage,

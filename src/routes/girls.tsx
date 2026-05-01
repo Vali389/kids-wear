@@ -1,22 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { productsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
-import catGirls from "@/assets/cat-girls.jpg";
+import catGirls from "@/assets/girls-herosectionew-1.jpeg";
 
 export const Route = createFileRoute("/girls")({
   head: () => ({
     meta: [
-      { title: "Girls Wear — Tinytots" },
-      { name: "description", content: "Twirl-worthy dresses, skirts and tees for girls." },
-      { property: "og:title", content: "Girls Wear — Tinytots" },
-      { property: "og:description", content: "Twirl-worthy dresses, skirts and tees for girls." },
+      { title: "Girls wear — Kathyayani Kids Wear" },
+      {
+        name: "description",
+        content: "Party frocks, lehengas & festive gowns — comfortable linings for every occasion.",
+      },
+      { property: "og:title", content: "Girls wear — Kathyayani Kids Wear" },
+      {
+        property: "og:description",
+        content: "Party frocks, lehengas & festive gowns.",
+      },
       { property: "og:image", content: catGirls },
     ],
   }),
   component: () => (
     <CategoryPage
       title="Girls"
-      subtitle="Dresses, skirts and twirl-worthy outfits"
+      subtitle="Party frocks, gowns & festive ethnic ensembles"
       image={catGirls}
       bg="var(--peach)"
       items={productsByCategory("girls")}

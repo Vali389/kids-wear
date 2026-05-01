@@ -1,15 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Heart, Leaf, Sparkles, Users } from "lucide-react";
-import hero1 from "@/assets/hero-1.jpg";
+import aboutHero from "@/assets/herosectionnew-4.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Tinytots" },
-      { name: "description", content: "We make joyful, comfy clothing for kids — designed in India, made to be loved." },
-      { property: "og:title", content: "About — Tinytots" },
-      { property: "og:description", content: "Joyful, comfy clothing for kids — designed in India." },
-      { property: "og:image", content: hero1 },
+      { title: "About — Kathyayani Kids Wear" },
+      {
+        name: "description",
+        content:
+          "Kathyayani Kids Wear — party frocks & festive girls wear from our studio in Kukatpally, Hyderabad.",
+      },
+      { property: "og:title", content: "About — Kathyayani Kids Wear" },
+      {
+        property: "og:description",
+        content: "Party & festive ensembles with comfortable cotton linings.",
+      },
+      { property: "og:image", content: aboutHero },
     ],
   }),
   component: AboutPage,
@@ -21,25 +28,32 @@ function AboutPage() {
       <div className="text-center">
         <p className="font-display text-sm font-bold uppercase tracking-widest text-berry">Our story</p>
         <h1 className="mt-2 font-display text-5xl font-bold sm:text-6xl">
-          Made with <span className="text-gradient-berry">tiny love</span>
+          <span className="text-gradient-berry">Kathyayani</span> Kids Wear
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-          Tinytots was born out of a simple wish: kids' clothing that's as joyful and comfy as their
-          imaginations are big. Every piece is designed in India, crafted from organic fabrics, and made
-          to be passed down between siblings, cousins and best friends.
+          We focus on festive and party-ready girls&apos; wear — long frocks, gowns, lehengas and ethnic
+          pieces lined with cotton so children stay comfortable through long celebrations. Based in{" "}
+          <span className="font-semibold text-foreground">
+            Sardar Patel nagar, Kukatpally, Hyderabad — 500085
+          </span>
+          .
         </p>
       </div>
 
       <div className="mt-10 overflow-hidden rounded-3xl shadow-pop">
-        <img src={hero1} alt="Our collection" className="h-full w-full object-cover animate-kenburns-in" />
+        <img
+          src={aboutHero}
+          alt="Kathyayani Kids Wear collection"
+          className="h-full w-full animate-kenburns-in object-cover"
+        />
       </div>
 
       <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { icon: Leaf, t: "Organic fabrics", d: "Soft, breathable cotton — kind to skin and planet." },
-          { icon: Heart, t: "Designed with care", d: "Tested for comfort by tiny humans we love." },
-          { icon: Sparkles, t: "Joyful prints", d: "Pastel rainbows, daisies, dinos and stars." },
-          { icon: Users, t: "Family-run", d: "A small studio, big dreams, bigger smiles." },
+          { icon: Leaf, t: "Comfortable linings", d: "Cotton lining on tissue and layered pieces where it matters." },
+          { icon: Heart, t: "Made for celebrations", d: "Birthdays, functions & festivals — designed to shine." },
+          { icon: Sparkles, t: "Ethnic & party edit", d: "Frocks, zari borders, gowns and floral details." },
+          { icon: Users, t: "Local studio", d: "Pickup and sizing help at our Kukatpally address." },
         ].map((v, i) => (
           <div key={i} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-berry">
@@ -52,15 +66,15 @@ function AboutPage() {
       </div>
 
       <div className="mt-14 rounded-3xl bg-gradient-warm p-8 text-center shadow-pop sm:p-12">
-        <h2 className="font-display text-3xl font-bold sm:text-4xl">Come say hi 👋</h2>
+        <h2 className="font-display text-3xl font-bold sm:text-4xl">Visit or message us</h2>
         <p className="mx-auto mt-2 max-w-lg text-base font-semibold text-foreground/80">
-          Got questions, custom orders, or just want to share a cute photo? We're always listening.
+          Questions about sizes, fabric or WhatsApp ordering? We&apos;d love to help.
         </p>
         <Link
           to="/contact"
           className="mt-5 inline-block rounded-full bg-foreground px-6 py-3 text-sm font-bold text-background shadow-pop"
         >
-          Get in touch
+          Contact
         </Link>
       </div>
     </div>

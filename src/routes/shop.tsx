@@ -9,16 +9,26 @@ type ShopSearch = { q?: string; cat?: Category | "all" };
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop All Kids Wear — Tinytots" },
-      { name: "description", content: "Browse our full collection of joyful kids clothing." },
-      { property: "og:title", content: "Shop All — Tinytots" },
-      { property: "og:description", content: "Browse our full collection of joyful kids clothing." },
+      { title: "Shop — Kathyayani Kids Wear" },
+      {
+        name: "description",
+        content: "Browse party frocks, lehengas and festive gowns.",
+      },
+      { property: "og:title", content: "Shop — Kathyayani Kids Wear" },
+      { property: "og:description", content: "Party & festive girls wear catalog." },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>): ShopSearch => ({
-    q: typeof search.q === "string" ? search.q : undefined,
-    cat: (search.cat as Category | "all" | undefined) ?? undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): ShopSearch => {
+    const raw = search.cat as string | undefined;
+    const normalized: Category | "all" | undefined =
+      raw === "boys" || raw === "baby"
+        ? "girls"
+        : (raw as Category | "all" | undefined);
+    return {
+      q: typeof search.q === "string" ? search.q : undefined,
+      cat: normalized ?? undefined,
+    };
+  },
   component: ShopPage,
 });
 
@@ -40,17 +50,15 @@ function ShopPage() {
   const cats: { value: Category | "all"; label: string }[] = [
     { value: "all", label: "All" },
     { value: "girls", label: "Girls" },
-    { value: "boys", label: "Boys" },
-    { value: "baby", label: "Baby" },
   ];
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="text-center">
         <p className="font-display text-sm font-bold uppercase tracking-widest text-berry">Collection</p>
-        <h1 className="mt-1 font-display text-3xl font-bold sm:text-5xl">Shop everything</h1>
+        <h1 className="mt-1 font-display text-3xl font-bold sm:text-5xl">Shop the collection</h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
-          {filtered.length} happy {filtered.length === 1 ? "piece" : "pieces"} ready to play.
+          {filtered.length} ensemble{filtered.length === 1 ? "" : "s"} — frocks, gowns & festive wear.
         </p>
       </div>
 

@@ -6,8 +6,8 @@ import { Logo } from "@/components/Logo";
 export const Route = createFileRoute("/signup")({
   head: () => ({
     meta: [
-      { title: "Sign up — Tinytots" },
-      { name: "description", content: "Create your Tinytots account." },
+      { title: "Sign up — Kathyayani Kids Wear" },
+      { name: "description", content: "Create your Kathyayani Kids Wear account." },
     ],
   }),
   component: SignupPage,
@@ -20,7 +20,7 @@ function SignupPage() {
       <div className="w-full rounded-3xl border border-border bg-card p-8 shadow-pop">
         <Logo className="mx-auto justify-center" />
         <h1 className="mt-6 text-center font-display text-3xl font-bold">Join the tribe 🌈</h1>
-        <p className="mt-1 text-center text-sm text-muted-foreground">Get 10% off your first order.</p>
+        <p className="mt-1 text-center text-sm text-muted-foreground">Save with code KATH10 on eligible orders.</p>
 
         <form
           onSubmit={(e) => {

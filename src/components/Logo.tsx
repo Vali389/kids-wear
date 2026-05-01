@@ -4,16 +4,15 @@ export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       to="/"
-      className={`group inline-flex items-baseline gap-0.5 ${className}`}
-      aria-label="Tinytots home"
+      className={`group inline-flex flex-col leading-tight sm:flex-row sm:items-baseline sm:gap-1 ${className}`}
+      aria-label="Kathyayani Kids Wear home"
     >
-      <span className="font-display text-3xl leading-none tracking-tight text-foreground">
-        tiny
+      <span className="font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+        Kathyayani
       </span>
-      <em className="font-italic-display text-3xl leading-none tracking-tight text-berry">
-        tots
-      </em>
-      <span className="ml-0.5 h-1.5 w-1.5 self-center rounded-full bg-berry" />
+      <span className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-berry sm:text-xs">
+        Kids Wear
+      </span>
     </Link>
   );
 }

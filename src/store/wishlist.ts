@@ -19,6 +19,6 @@ export const useWishlist = create<WishlistState>()(
         }),
       has: (productId) => get().ids.includes(productId),
     }),
-    { name: "tinytots-wishlist" },
+    { name: "kathyayani-wishlist" },
   ),
 );

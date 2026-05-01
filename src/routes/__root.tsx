@@ -35,10 +35,17 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tinytots — Joyful Kids Wear" },
-      { name: "description", content: "Playful, comfy & colorful clothing for tiny humans. Shop dresses, tees, hoodies and more." },
-      { property: "og:title", content: "Tinytots — Joyful Kids Wear" },
-      { property: "og:description", content: "Playful, comfy & colorful clothing for tiny humans." },
+      { title: "Kathyayani Kids Wear — Party & festive girls wear" },
+      {
+        name: "description",
+        content:
+          "Party frocks, lehengas and ethnic gowns with comfortable linings. Studio in Kukatpally, Hyderabad.",
+      },
+      { property: "og:title", content: "Kathyayani Kids Wear" },
+      {
+        property: "og:description",
+        content: "Party and festive girls wear with comfortable linings — Hyderabad.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

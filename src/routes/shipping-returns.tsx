@@ -3,8 +3,11 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/shipping-returns")({
   head: () => ({
     meta: [
-      { title: "Shipping & Returns — Tinytots" },
-      { name: "description", content: "Read Tinytots shipping timelines and return policy details." },
+      { title: "Shipping & Returns — Kathyayani Kids Wear" },
+      {
+        name: "description",
+        content: "Shipping timelines and returns for Kathyayani Kids Wear orders.",
+      },
     ],
   }),
   component: ShippingReturnsPage,

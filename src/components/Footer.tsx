@@ -14,8 +14,8 @@ export function Footer() {
         <div className="space-y-4">
           <Logo />
           <p className="max-w-xs text-sm text-muted-foreground">
-            Joyful, comfy and play-ready clothing for the tiniest humans.
-            Made with love, designed to be passed down.
+            Kathyayani Kids Wear brings party frocks, gowns and ethnic ensembles with comfortable linings
+            for birthdays, functions and everyday celebrations.
           </p>
           <div className="flex gap-2">
             <a
@@ -27,22 +27,21 @@ export function Footer() {
             >
               <span className="text-base font-bold">IG</span>
             </a>
-            <a
-              href="mailto:hello@tinytots.com"
+            <Link
+              to="/contact"
               className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-berry hover:text-berry-foreground"
-              aria-label="Email"
+              aria-label="Contact"
             >
               <Mail className="h-5 w-5" />
-            </a>
+            </Link>
           </div>
         </div>
         <div>
           <h4 className="font-display text-base font-bold">Shop</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/shop" className="hover:text-foreground">All Products</Link></li>
-            <li><Link to="/girls" className="hover:text-foreground">Girls</Link></li>
-            <li><Link to="/boys" className="hover:text-foreground">Boys</Link></li>
-            <li><Link to="/baby" className="hover:text-foreground">Baby</Link></li>
+            <li><Link to="/shop" className="hover:text-foreground">All ensembles</Link></li>
+            <li><Link to="/girls" className="hover:text-foreground">Girls edit</Link></li>
+            <li><Link to="/contact" className="hover:text-foreground">Studio visit / pickup</Link></li>
           </ul>
         </div>
         <div>
@@ -90,7 +89,12 @@ export function Footer() {
       </div>
       <div className="border-t border-border/60">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} Tinytots. All rights reserved.</p>
+          <div className="text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Kathyayani Kids Wear.</p>
+            <p className="mt-1 max-w-sm text-muted-foreground">
+              202, Niharika residency, Sardar Patel nagar, Kukatpally, Hyderabad — 500085
+            </p>
+          </div>
           <p className="inline-flex items-center gap-1">
             Made with <Heart className="h-3.5 w-3.5 fill-berry text-berry" /> for little ones
           </p>

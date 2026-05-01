@@ -6,10 +6,10 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Tinytots" },
-      { name: "description", content: "Reach out to the Tinytots team — we'd love to hear from you." },
-      { property: "og:title", content: "Contact — Tinytots" },
-      { property: "og:description", content: "Reach out to the Tinytots team." },
+      { title: "Contact — Kathyayani Kids Wear" },
+      { name: "description", content: "Visit or message Kathyayani Kids Wear — Kukatpally, Hyderabad." },
+      { property: "og:title", content: "Contact — Kathyayani Kids Wear" },
+      { property: "og:description", content: "Party wear & ethnic ensembles — Kukatpally, Hyderabad." },
     ],
   }),
   component: ContactPage,
@@ -23,7 +23,7 @@ function ContactPage() {
         <p className="font-display text-sm font-bold uppercase tracking-widest text-berry">Say hello</p>
         <h1 className="mt-1 font-display text-5xl font-bold sm:text-6xl">Get in touch</h1>
         <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
-          Questions, custom orders, or just want to chat? We reply faster than a toddler at snack time.
+          Sizes, pickups at our Kukatpally studio or WhatsApp ordering — we're happy to help.
         </p>
       </div>
 
@@ -79,8 +79,12 @@ function ContactPage() {
           {[
             { icon: Phone, t: "Call us", d: "+91 79958 89904" },
             { icon: MessageCircle, t: "WhatsApp", d: "+91 79958 89904", href: "https://wa.me/917995889904" },
-            { icon: Mail, t: "Email", d: "hello@tinytots.com", href: "mailto:hello@tinytots.com" },
-            { icon: MapPin, t: "Studio", d: "Bengaluru, India" },
+            { icon: Mail, t: "Write to us", d: "Send a note via the form →" },
+            {
+              icon: MapPin,
+              t: "Studio",
+              d: "202, Niharika residency, Sardar Patel nagar, Kukatpally — 500085",
+            },
           ].map((c, i) => {
             const Inner = (
               <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft transition-transform hover:-translate-y-0.5">

@@ -15,9 +15,9 @@ export const Route = createFileRoute("/product/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.product.name} — Tinytots` },
+          { title: `${loaderData.product.name} — Kathyayani Kids Wear` },
           { name: "description", content: loaderData.product.shortDescription },
-          { property: "og:title", content: `${loaderData.product.name} — Tinytots` },
+          { property: "og:title", content: `${loaderData.product.name} — Kathyayani Kids Wear` },
           { property: "og:description", content: loaderData.product.shortDescription },
           { property: "og:image", content: loaderData.product.images[0] },
         ]

@@ -7,7 +7,7 @@ import { useCart } from "@/store/cart";
 export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
-      { title: "Checkout — Tinytots" },
+      { title: "Checkout — Kathyayani Kids Wear" },
       { name: "description", content: "Complete your order via WhatsApp." },
     ],
   }),
@@ -49,7 +49,7 @@ function CheckoutPage() {
       )
       .join("\n");
 
-    const msg = `🌈 *NEW ORDER — Tinytots*
+    const msg = `🌈 *NEW ORDER — Kathyayani Kids Wear*
 
 *Customer:* ${form.name}
 *Phone:* ${form.phone}

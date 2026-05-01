@@ -1,30 +1,14 @@
-import rainbow1 from "@/assets/p-rainbow-tee-1.jpg";
-import rainbow2 from "@/assets/p-rainbow-tee-2.jpg";
-import rainbow3 from "@/assets/p-rainbow-tee-3.jpg";
-import daisy1 from "@/assets/p-daisy-dress-1.jpg";
-import daisy2 from "@/assets/p-daisy-dress-2.jpg";
-import daisy3 from "@/assets/p-daisy-dress-3.jpg";
-import denim1 from "@/assets/p-denim-jacket-1.jpg";
-import denim2 from "@/assets/p-denim-jacket-2.jpg";
-import denim3 from "@/assets/p-denim-jacket-3.jpg";
-import dung1 from "@/assets/p-mint-dungaree-1.jpg";
-import dung2 from "@/assets/p-mint-dungaree-2.jpg";
-import dung3 from "@/assets/p-mint-dungaree-3.jpg";
-import tutu1 from "@/assets/p-tutu-1.jpg";
-import tutu2 from "@/assets/p-tutu-2.jpg";
-import tutu3 from "@/assets/p-tutu-3.jpg";
-import star1 from "@/assets/p-star-hoodie-1.jpg";
-import star2 from "@/assets/p-star-hoodie-2.jpg";
-import star3 from "@/assets/p-star-hoodie-3.jpg";
-import dino1 from "@/assets/p-dino-pj-1.jpg";
-import dino2 from "@/assets/p-dino-pj-2.jpg";
-import dino3 from "@/assets/p-dino-pj-3.jpg";
-import uni1 from "@/assets/p-unicorn-tee-1.jpg";
-import uni2 from "@/assets/p-unicorn-tee-2.jpg";
-import uni3 from "@/assets/p-unicorn-tee-3.jpg";
-import jog1 from "@/assets/p-jogger-1.jpg";
-import jog2 from "@/assets/p-jogger-2.jpg";
-import jog3 from "@/assets/p-jogger-3.jpg";
+import partyLongRoyal from "@/assets/brightroyaland pinkethinicfrock9-18.jpeg";
+import partyWearFrock from "@/assets/girls-herosectionew-1.jpeg";
+import partyChunkyFrock from "@/assets/giersherosection-new-3.jpeg";
+import elegantPurpleZari from "@/assets/elegantethenic frockkids.jpeg";
+import pinkFloralParty from "@/assets/adorablepink partywith fleoral.jpeg";
+import redFestiveGown from "@/assets/elegantredfetsivegown10-12.jpeg";
+import greenFloralLehenga from "@/assets/elegantgerreenforallehanga6-7.jpeg";
+import mustardLongFrock from "@/assets/eleganntmutsarrdyeloowlongfronk10-15.jpeg";
+import pinkGoldTraditional from "@/assets/adorablevibarantpinkand golsdtarditionalfrock1-5.jpeg";
+import orangeMaroonEthnic from "@/assets/brightand maroonethinicfrock1-2.jpeg";
+import maroonGoldTraditional from "@/assets/elangantrichmaroonandtraditoonlfrock9-18.jpeg";
 
 export type Category = "boys" | "girls" | "baby";
 
@@ -46,169 +30,209 @@ export type Product = {
   images: string[];
 };
 
+/** Kathyayani Kids Wear — product photos map 1:1 to assets filenames */
 export const products: Product[] = [
   {
-    id: "p1",
-    slug: "rainbow-stripe-tee",
-    name: "Rainbow Stripes Tee",
-    price: 599,
-    mrp: 899,
-    category: "boys",
-    tag: "Bestseller",
-    badge: "New",
-    colorChip: "var(--mint)",
-    shortDescription: "Soft pastel rainbow stripes that pop on any playground.",
-    description:
-      "Our Rainbow Stripes Tee is crafted from breathable 100% organic cotton with a relaxed fit. Pastel mint, peach, sky and sunshine stripes make it the happiest tee in the drawer.",
-    fabric: "100% organic cotton, 180 GSM",
-    care: "Machine wash cold • Tumble dry low • Iron inside out",
-    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y"],
-    images: [rainbow1, rainbow2, rainbow3],
-  },
-  {
-    id: "p2",
-    slug: "daisy-sundress",
-    name: "Sunny Daisy Sundress",
-    price: 899,
-    mrp: 1299,
+    id: "k1",
+    slug: "party-wear-long-frock-12-15",
+    name: "Party wear long frock",
+    price: 4599,
+    mrp: 5999,
     category: "girls",
-    tag: "Trending",
-    colorChip: "var(--sunshine)",
-    shortDescription: "Twirl-worthy yellow daisy print with ruffled hem.",
-    description:
-      "Bring sunshine to every party with our daisy print sundress. Featuring a flutter-sleeve top, fitted bodice and a generous twirl skirt with a sweet ruffled hem.",
-    fabric: "100% rayon, soft & flowy",
-    care: "Hand wash cold • Line dry in shade • Cool iron",
-    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
-    images: [daisy1, daisy2, daisy3],
-  },
-  {
-    id: "p3",
-    slug: "sky-denim-jacket",
-    name: "Sky Denim Jacket",
-    price: 1299,
-    mrp: 1799,
-    category: "boys",
-    badge: "New",
-    colorChip: "var(--sky)",
-    shortDescription: "Classic light wash denim, made tiny and tough.",
-    description:
-      "A wardrobe staple in soft-washed light denim. Two chest pockets, sturdy buttons and reinforced stitching for endless adventures.",
-    fabric: "98% cotton, 2% elastane denim",
-    care: "Wash with similar colors • Tumble dry low",
-    sizes: ["3-4Y", "5-6Y", "7-8Y", "9-10Y"],
-    images: [denim1, denim2, denim3],
-  },
-  {
-    id: "p4",
-    slug: "mint-dungarees",
-    name: "Mint Garden Dungarees",
-    price: 999,
-    mrp: 1399,
-    category: "baby",
-    tag: "Cozy",
-    colorChip: "var(--mint)",
-    shortDescription: "Soft mint dungarees with wooden buttons.",
-    description:
-      "Our cosiest dungarees in pillowy soft cotton twill. Adjustable straps with chunky wooden buttons and roomy front pocket.",
-    fabric: "100% cotton twill",
-    care: "Machine wash cold • Tumble dry low",
-    sizes: ["6-9M", "9-12M", "12-18M", "18-24M", "2-3Y"],
-    images: [dung1, dung2, dung3],
-  },
-  {
-    id: "p5",
-    slug: "ballet-pink-tutu",
-    name: "Ballet Pink Tutu",
-    price: 749,
-    mrp: 1099,
-    category: "girls",
-    tag: "Dreamy",
-    colorChip: "var(--peach)",
-    shortDescription: "Fluffy tulle layers with a satin bow.",
-    description:
-      "Made for ballerinas and birthday queens. Three layers of soft tulle, a comfy elastic waistband and a satin ribbon bow at the front.",
-    fabric: "100% nylon tulle • cotton liner",
-    care: "Hand wash gently • Line dry • Do not iron tulle",
-    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
-    images: [tutu1, tutu2, tutu3],
-  },
-  {
-    id: "p6",
-    slug: "starry-sky-hoodie",
-    name: "Starry Sky Hoodie",
-    price: 1099,
-    mrp: 1499,
-    category: "boys",
-    tag: "Cozy",
-    badge: "Limited",
-    colorChip: "var(--sky)",
-    shortDescription: "Soft fleece hoodie with friendly star print.",
-    description:
-      "Cuddle weather essential in brushed fleece. Roomy kangaroo pocket, ribbed cuffs and a smiling star on the chest.",
-    fabric: "80% cotton, 20% polyester fleece",
-    care: "Machine wash cold • Tumble dry low",
-    sizes: ["3-4Y", "5-6Y", "7-8Y", "9-10Y", "11-12Y"],
-    images: [star1, star2, star3],
-  },
-  {
-    id: "p7",
-    slug: "dino-pj-set",
-    name: "Tiny Dino PJ Set",
-    price: 849,
-    mrp: 1199,
-    category: "baby",
-    tag: "Bestseller",
-    colorChip: "var(--mint)",
-    shortDescription: "Mint and peach dino prints for sweet dreams.",
-    description:
-      "A two-piece PJ set in buttery soft modal. Gentle elastic waistband, ribbed cuffs and the cutest little dinos all over.",
-    fabric: "95% modal, 5% spandex",
-    care: "Machine wash cold • Tumble dry low",
-    sizes: ["6-12M", "1-2Y", "2-3Y", "3-4Y"],
-    images: [dino1, dino2, dino3],
-  },
-  {
-    id: "p8",
-    slug: "lavender-unicorn-tee",
-    name: "Lavender Unicorn Tee",
-    price: 549,
-    mrp: 799,
-    category: "girls",
-    badge: "New",
+    tag: "Party wear",
     colorChip: "var(--lavender)",
-    shortDescription: "Magical unicorn print on dreamy lavender.",
+    shortDescription:
+      "Double-lined long frock in crepe with comfortable cotton lining. Ages 12–15 years.",
     description:
-      "A whimsical tee in soft lavender cotton, with a sparkling white unicorn print and a relaxed comfy fit.",
-    fabric: "100% combed cotton",
-    care: "Machine wash cold • Tumble dry low • Iron inside out",
-    sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y"],
-    images: [uni1, uni2, uni3],
+      "Party wear long frock with double lining — crepe outer and soft cotton lining for comfort through long celebrations. Sized for ages 12–15 years.",
+    fabric: "Crepe with cotton lining",
+    care: "Dry clean recommended • Gentle hand wash in cold water • Cool iron",
+    sizes: ["12Y", "13Y", "14Y", "15Y"],
+    images: [partyLongRoyal, partyLongRoyal],
   },
   {
-    id: "p9",
-    slug: "explorer-cargo-jogger",
-    name: "Explorer Cargo Joggers",
-    price: 1199,
-    mrp: 1599,
-    category: "boys",
-    tag: "Trending",
+    id: "k2",
+    slug: "party-wear-frock-tissue",
+    name: "Party wear frock",
+    price: 2199,
+    mrp: 2999,
+    category: "girls",
+    tag: "Comfort",
     colorChip: "var(--peach)",
-    shortDescription: "Beige cargo joggers with secret side pockets.",
+    shortDescription:
+      "Smooth tissue with cotton lining. All-day comfort in every season.",
     description:
-      "Adventure ready joggers with a comfy elastic waist, drawstring and side cargo pockets perfect for tiny treasures.",
-    fabric: "97% cotton, 3% elastane",
-    care: "Machine wash cold • Tumble dry low",
-    sizes: ["3-4Y", "5-6Y", "7-8Y", "9-10Y", "11-12Y"],
-    images: [jog1, jog2, jog3],
+      "Party wear frock in smooth tissue with breathable cotton lining, designed so kids stay comfortable all day across seasons. Ages: 3–4 years ankle length, 4–5 years knee length.",
+    fabric: "Tissue with cotton lining",
+    care: "Gentle hand wash • Line dry • Cool iron inside out",
+    sizes: ["3-4Y (ankle length)", "4-5Y (knee length)"],
+    images: [partyWearFrock, partyWearFrock],
+  },
+  {
+    id: "k3",
+    slug: "party-wear-chunky-work-frock",
+    name: "Party wear chunky work frock",
+    price: 2499,
+    mrp: 3299,
+    category: "girls",
+    tag: "Statement",
+    colorChip: "var(--sunshine)",
+    shortDescription:
+      "Smooth tissue with chunky work and cotton lining — festive and breathable.",
+    description:
+      "Party wear chunky work frock: smooth tissue with eye-catching chunky work and soft cotton lining. Built for celebrations while staying comfortable every season. Ages: 3–4 years ankle length, 4–5 years knee length.",
+    fabric: "Tissue with cotton lining • embroidered / chunky panels",
+    care: "Gentle hand wash • Do not bleach • Steam or cool iron away from trims",
+    sizes: ["3-4Y (ankle length)", "4-5Y (knee length)"],
+    images: [partyChunkyFrock, partyChunkyFrock],
+  },
+  {
+    id: "k4",
+    slug: "elegant-purple-zari-ethnic-frock",
+    name: "Elegant ethnic frock",
+    price: 2899,
+    mrp: 3899,
+    category: "girls",
+    tag: "Ethnic",
+    badge: "Festive",
+    colorChip: "var(--lavender)",
+    shortDescription:
+      "Lightweight fabric with white base and rich purple zari border; ruffled bodice for a festive silhouette.",
+    description:
+      "Elegant ethnic frock for kids featuring soft, lightweight fabric for all-day comfort. Beautiful white base with a rich purple zari border and a stylish ruffle detail across the bodice. Flared silhouette for ease of movement — ideal for celebrations, functions, and special occasions. Breathable and suitable for every season.",
+    fabric: "Lightweight festive weave with cotton or blended lining where applicable",
+    care: "Gentle hand wash • Line dry • Cool iron • Store folded with care",
+    sizes: ["4-5Y"],
+    images: [elegantPurpleZari, elegantPurpleZari],
+  },
+  {
+    id: "k5",
+    slug: "adorable-pink-floral-party-frock",
+    name: "Adorable pink party frock",
+    price: 2299,
+    mrp: 2999,
+    category: "girls",
+    tag: "Pink",
+    colorChip: "var(--peach)",
+    shortDescription: "Pink party frock with floral embroidery and a cute bow.",
+    description:
+      "Adorable pink party frock with floral embroidery and sweet bow detailing. Lightweight, comfortable, and perfect for birthdays and special occasions.",
+    fabric: "Lightweight woven / embroidered sections with soft lining",
+    care: "Gentle hand wash • Dry flat • Light steam",
+    sizes: ["3-4Y", "4-5Y"],
+    images: [pinkFloralParty, pinkFloralParty],
+  },
+  {
+    id: "k6",
+    slug: "elegant-red-festive-gown",
+    name: "Elegant red festive gown",
+    price: 3999,
+    mrp: 4999,
+    category: "girls",
+    tag: "Gown",
+    badge: "Occasion",
+    colorChip: "var(--berry)",
+    shortDescription: "Gold embroidery with a flared festive silhouette.",
+    description:
+      "Elegant red festive gown with refined gold embroidery, flared silhouette, and a soft comfortable fit — made for standout moments.",
+    fabric: "Rich festive fabric with embroidery / highlights",
+    care: "Dry clean preferred • Gentle spot clean • Hang or fold with care",
+    sizes: ["10-12Y", "12-13Y"],
+    images: [redFestiveGown, redFestiveGown],
+  },
+  {
+    id: "k7",
+    slug: "elegant-green-floral-lehenga",
+    name: "Elegant green floral lehenga",
+    price: 3499,
+    mrp: 4499,
+    category: "girls",
+    tag: "Lehenga",
+    colorChip: "var(--mint)",
+    shortDescription: "Printed bodice with a rich satin skirt for festive sparkle.",
+    description:
+      "Elegant green floral lehenga with a rich satin skirt and a beautifully printed bodice — timeless festive dressing done right.",
+    fabric: "Satin skirt • printed bodice with cotton/blend liner",
+    care: "Gentle hand wash separates if needed • Steam on low • Store hanging or folded separately",
+    sizes: ["6-7Y", "7-8Y"],
+    images: [greenFloralLehenga, greenFloralLehenga],
+  },
+  {
+    id: "k8",
+    slug: "elegant-mustard-long-traditional-frock",
+    name: "Elegant mustard-yellow long frock",
+    price: 4299,
+    mrp: 5499,
+    category: "girls",
+    tag: "Traditional",
+    colorChip: "var(--sunshine)",
+    shortDescription: "Full sleeves with desert-inspired border motifs.",
+    description:
+      "Elegant mustard-yellow long frock with fitted V-neck bodice, full sleeves, and graceful flare. Detailed with delicate silver motifs and an embroidered lower border showcasing camels and palm trees — a refined classic look.",
+    fabric: "Festive fabric with embroidery accents",
+    care: "Dry clean or gentle dry wash • Steam carefully on embroidery • Avoid harsh detergents",
+    sizes: ["10Y", "11Y", "12Y", "13Y", "14Y", "15Y"],
+    images: [mustardLongFrock, mustardLongFrock],
+  },
+  {
+    id: "k9",
+    slug: "vibrant-pink-gold-traditional-frock",
+    name: "Vibrant pink & gold traditional frock",
+    price: 1999,
+    mrp: 2599,
+    category: "girls",
+    tag: "Little ones",
+    colorChip: "var(--peach)",
+    shortDescription:
+      "Pink and rich gold-toned traditional frock with a flared festive shape.",
+    description:
+      "Adorable vibrant pink and gold traditional frock with intricate zari-style patterns and a flared silhouette — celebrations made picture-perfect.",
+    fabric: "Traditional weave / blend with metallic highlights",
+    care: "Gentle hand wash • Line dry • Light iron on reverse",
+    sizes: ["1Y", "2Y", "3Y", "4Y", "5Y"],
+    images: [pinkGoldTraditional, pinkGoldTraditional],
+  },
+  {
+    id: "k10",
+    slug: "bright-orange-maroon-ethnic-frock",
+    name: "Bright orange & maroon ethnic frock",
+    price: 1799,
+    mrp: 2299,
+    category: "girls",
+    tag: "Kanchi style",
+    colorChip: "var(--berry)",
+    shortDescription:
+      "Bright orange / maroon with elegant Kanchi-style pattu borders.",
+    description:
+      "Bright orange and maroon ethnic frock with graceful Kanchi-inspired pattu zari borders and a pleated silhouette — heirloom charm for littles.",
+    fabric: "Silk-touch / pattu-inspired borders with breathable lining",
+    care: "Dry clean recommended • Gentle hand wash if suited to fabric • Store folded with tissue",
+    sizes: ["1-2Y"],
+    images: [orangeMaroonEthnic, orangeMaroonEthnic],
+  },
+  {
+    id: "k11",
+    slug: "rich-maroon-gold-traditional-frock",
+    name: "Rich maroon & gold traditional frock",
+    price: 2199,
+    mrp: 2799,
+    category: "girls",
+    tag: "Heritage",
+    colorChip: "var(--berry)",
+    shortDescription:
+      "Classic pleated silhouette with ornate maroon-and-gold zari border.",
+    description:
+      "Elegant rich maroon and gold traditional frock with pleated flare and ornate zari border — a polished festive look for your little one.",
+    fabric: "Traditional festive fabric with zari accents",
+    care: "Dry clean recommended • Mild hand wash only if labelled safe • Cool iron • Avoid direct perfume on zari",
+    sizes: ["9-18M", "2-3Y"],
+    images: [maroonGoldTraditional, maroonGoldTraditional],
   },
 ];
 
-export const findProduct = (slug: string) =>
-  products.find((p) => p.slug === slug);
+export const findProduct = (slug: string) => products.find((p) => p.slug === slug);
 
-export const productsByCategory = (cat: Category) =>
-  products.filter((p) => p.category === cat);
+export const productsByCategory = (cat: Category) => products.filter((p) => p.category === cat);
 
 export const searchProducts = (q: string) => {
   if (!q.trim()) return products;

@@ -6,10 +6,8 @@ import { useCart } from "@/store/cart";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop All" },
+  { to: "/shop", label: "Shop" },
   { to: "/girls", label: "Girls" },
-  { to: "/boys", label: "Boys" },
-  { to: "/baby", label: "Baby" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -54,8 +52,8 @@ export function Navbar() {
       {/* Promo bar */}
       <div className="bg-foreground text-background">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-3 py-2 text-center text-[10px] font-medium leading-relaxed tracking-wide sm:text-[11px]">
-          Free shipping on orders over ₹999 · Use code{" "}
-          <span className="rounded-full bg-background/15 px-2 py-0.5 font-semibold">TINY10</span>{" "}
+          Kathyayani Kids Wear · Free shipping on eligible orders · Hyderabad (Kukatpally) • Use code{" "}
+          <span className="rounded-full bg-background/15 px-2 py-0.5 font-semibold">KATH10</span>{" "}
           for 10% off
         </div>
       </div>
@@ -129,7 +127,7 @@ export function Navbar() {
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for dresses, tees, hoodies…"
+              placeholder="Search frocks, gowns, lehengas…"
               className="flex-1 bg-transparent text-base font-medium text-foreground outline-none placeholder:text-muted-foreground"
             />
             <button
