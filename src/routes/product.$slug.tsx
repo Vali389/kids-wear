@@ -1,14 +1,16 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { toast } from "sonner";
 import { Heart, Minus, Plus, ShieldCheck, ShoppingBag, Truck, RotateCcw, ChevronRight, Check } from "lucide-react";
-import { findProduct, products } from "@/data/products";
+import { findProduct, products, resolveProductSlug } from "@/data/products";
 import { useCart } from "@/store/cart";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductImageZoom } from "@/components/ProductImageZoom";
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
-    const product = findProduct(params.slug);
+  loader: ({ params, location }) => {
+    const slug = resolveProductSlug(params, location.pathname);
+    const product = findProduct(slug);
     if (!product) throw notFound();
     return { product };
   },
@@ -45,9 +47,30 @@ function ProductPage() {
   const addItem = useCart((s) => s.addItem);
   const openCart = useCart((s) => s.open);
 
+  /**
+   * Size-based pricing: if a product description encodes price steps like
+   * "3–4Y ₹1,150 • 4–5Y ₹1,300 …" we parse them into a lookup map so the
+   * displayed price updates when the user picks a size.
+   */
+  const sizePriceMap = useMemo<Record<string, number>>(() => {
+    const map: Record<string, number> = {};
+    // Match patterns like "3-4Y ₹1,150" or "3–4Y ₹1150"
+    const rx = /([\d][\d\-–]+[YMy]+)\s*[₹]([\d,]+)/g;
+    let m: RegExpExecArray | null;
+    while ((m = rx.exec(product.description)) !== null) {
+      const sizeKey = m[1].replace("–", "-");
+      const price = Number(m[2].replace(/,/g, ""));
+      if (!isNaN(price)) map[sizeKey] = price;
+    }
+    return map;
+  }, [product.description]);
+
+  const activePrice = sizePriceMap[size] ?? sizePriceMap[size.replace("-", "–")] ?? product.price;
+  const activeMrp = product.mrp;
+
   const discount =
-    product.mrp > product.price
-      ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
+    activeMrp > activePrice
+      ? Math.round(((activeMrp - activePrice) / activeMrp) * 100)
       : 0;
 
   const handleAdd = (buyNow = false) => {
@@ -56,7 +79,7 @@ function ProductPage() {
         productId: product.id,
         slug: product.slug,
         name: product.name,
-        price: product.price,
+        price: activePrice,
         size,
         image: product.images[0],
       },
@@ -82,27 +105,28 @@ function ProductPage() {
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         {/* GALLERY */}
         <div className="flex flex-col gap-3">
-          <div
-            className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl"
-            style={{ backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))` }}
-          >
-            <img
-              src={product.images[activeImage]}
-              alt={product.name}
-              className="max-h-full w-full object-contain p-2 animate-fade-in"
-              key={activeImage}
-            />
-            {product.badge && (
-              <span className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-background">
-                {product.badge}
-              </span>
-            )}
-            {discount > 0 && (
-              <span className="absolute right-4 top-4 rounded-full bg-berry px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-berry-foreground">
-                -{discount}% OFF
-              </span>
-            )}
-          </div>
+          <ProductImageZoom
+            key={activeImage}
+            src={product.images[activeImage]}
+            alt={product.name}
+            bgTint={product.colorChip}
+            badges={
+              product.badge || discount > 0 ? (
+                <div className="flex w-full items-start justify-between gap-2">
+                  {product.badge ? (
+                    <span className="inline-flex rounded-full bg-foreground px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-background">
+                      {product.badge}
+                    </span>
+                  ) : null}
+                  {discount > 0 ? (
+                    <span className="inline-flex rounded-full bg-berry px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-berry-foreground">
+                      -{discount}% OFF
+                    </span>
+                  ) : null}
+                </div>
+              ) : undefined
+            }
+          />
 
           {/* Thumbnails */}
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -127,22 +151,28 @@ function ProductPage() {
         {/* DETAILS */}
         <div className="lg:sticky lg:top-28 lg:self-start space-y-7">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">{product.category}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">
+              {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+            </p>
             <h1 className="mt-2 font-display text-5xl leading-[1.02] sm:text-6xl">
               {product.name}
             </h1>
             <p className="mt-4 text-base text-muted-foreground">{product.shortDescription}</p>
+            <p className="mt-2 text-sm font-semibold text-foreground">{product.ageLabel}</p>
+            {product.stockNote ? (
+              <p className="mt-1 text-sm font-medium text-berry">{product.stockNote}</p>
+            ) : null}
           </div>
 
           {/* Price */}
           <div className="flex items-end gap-3">
             <span className="font-display text-4xl text-foreground">
-              ₹{product.price.toLocaleString("en-IN")}
+              ₹{activePrice.toLocaleString("en-IN")}
             </span>
-            {product.mrp > product.price && (
+            {activeMrp > activePrice && (
               <>
                 <span className="pb-1.5 text-base text-muted-foreground line-through">
-                  ₹{product.mrp.toLocaleString("en-IN")}
+                  ₹{activeMrp.toLocaleString("en-IN")}
                 </span>
                 <span className="mb-1.5 rounded-full bg-mint px-2.5 py-0.5 text-xs font-bold text-mint-foreground">
                   Save {discount}%
@@ -280,7 +310,7 @@ function ProductPage() {
           <h2 className="mb-8 font-display text-4xl sm:text-5xl">
             You might also <em className="font-italic-display">love</em>
           </h2>
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+          <div className="grid grid-cols-2 items-stretch gap-4 sm:gap-6 md:grid-cols-4">
             {related.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}

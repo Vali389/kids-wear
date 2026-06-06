@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { productsByCategory } from "@/data/products";
+import { productsGirlsAndBaby, type Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import catGirls from "@/assets/girls-herosectionew-1.jpeg";
 
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/girls")({
       subtitle="Party frocks, gowns & festive ethnic ensembles"
       image={catGirls}
       bg="var(--peach)"
-      items={productsByCategory("girls")}
+      items={productsGirlsAndBaby()}
     />
   ),
 });
@@ -41,7 +41,7 @@ export function CategoryPage({
   subtitle: string;
   image: string;
   bg: string;
-  items: ReturnType<typeof productsByCategory>;
+  items: Product[];
 }) {
   return (
     <div>
@@ -64,7 +64,7 @@ export function CategoryPage({
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 items-stretch gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {items.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}

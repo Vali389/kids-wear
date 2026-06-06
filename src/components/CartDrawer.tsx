@@ -73,8 +73,7 @@ export function CartDrawer() {
                     className="flex gap-3 rounded-2xl border border-border bg-card p-3"
                   >
                     <Link
-                      to="/product/$slug"
-                      params={{ slug: it.slug }}
+                      to={`/product/${encodeURIComponent(it.slug)}`}
                       onClick={close}
                       className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-muted"
                     >
@@ -84,8 +83,7 @@ export function CartDrawer() {
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <Link
-                            to="/product/$slug"
-                            params={{ slug: it.slug }}
+                            to={`/product/${encodeURIComponent(it.slug)}`}
                             onClick={close}
                             className="font-display text-sm font-bold leading-tight hover:text-berry"
                           >

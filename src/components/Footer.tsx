@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-border/60 bg-card">
-      <div className="bg-gradient-rainbow h-2 w-full" />
+      <div className="bg-gradient-gold h-2 w-full" />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="space-y-4">
           <Logo />
@@ -22,14 +22,14 @@ export function Footer() {
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-berry hover:text-berry-foreground"
+              className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-primary hover:text-primary-foreground"
               aria-label="Instagram"
             >
               <span className="text-base font-bold">IG</span>
             </a>
             <Link
               to="/contact"
-              className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-berry hover:text-berry-foreground"
+              className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-foreground hover:bg-primary hover:text-primary-foreground"
               aria-label="Contact"
             >
               <Mail className="h-5 w-5" />
@@ -76,11 +76,11 @@ export function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 rounded-full border border-border bg-background px-4 py-2.5 text-sm outline-none focus:border-berry"
+              className="flex-1 rounded-full border border-border bg-background px-4 py-2.5 text-sm outline-none focus:border-primary"
             />
             <button
               type="submit"
-              className="rounded-full bg-berry px-4 py-2.5 text-sm font-bold text-berry-foreground shadow-soft transition-transform active:scale-95"
+              className="rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-soft transition-transform active:scale-95"
             >
               Join
             </button>

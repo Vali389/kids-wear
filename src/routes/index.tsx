@@ -1,18 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { ArrowRight, ArrowLeft, Sparkles, Truck, ShieldCheck, RotateCcw } from "lucide-react";
-import heroHome1 from "@/assets/herosectionew-1.jpeg";
-import heroHome2 from "@/assets/herosectionnew-2.jpeg";
-import heroHome3 from "@/assets/herosectionnew-3.jpeg";
-import heroGirls1 from "@/assets/girls-herosectionew-1.jpeg";
-import heroGirls2 from "@/assets/Girtsls-herosectiion-new-2.jpeg";
-import heroGirls3 from "@/assets/giersherosection-new-3.jpeg";
-import heroHome4 from "@/assets/herosectionnew-4.jpeg";
+import { ArrowRight, ArrowLeft, Sparkles, Truck, ShieldCheck, RotateCcw, Loader2 } from "lucide-react";
+import hero1 from "@/assets/hero/traditional-elegance.png";
+import hero2 from "@/assets/hero/kids_ethnic_wear_hero_2_1778329736443.png";
+import hero3 from "@/assets/hero/kids_ethnic_wear_hero_3_1778329774693.png";
+import ctaBg from "@/assets/hero/cta-bg.png";
+import heroGirls1 from "@/assets/hero-1.png";
+import heroGirls2 from "@/assets/hero-2.png";
+import heroGirls3 from "@/assets/hero-3.png";
 import catParty from "@/assets/herosectionnew-5.jpeg";
 import catFestive from "@/assets/herosectionnew-3.jpeg";
 import catShop from "@/assets/girls-herosectionew-1.jpeg";
-import { products } from "@/data/products";
+import type { Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 
 export const Route = createFileRoute("/")({
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Festive girls wear curated with comfortable linings. Kukatpally, Hyderabad.",
       },
-      { property: "og:image", content: heroHome1 },
+      { property: "og:image", content: hero1 },
     ],
   }),
   component: HomePage,
@@ -37,16 +37,26 @@ export const Route = createFileRoute("/")({
 
 const slides = [
   {
-    image: heroHome1,
-    eyebrow: "Kathyayani Kids Wear",
-    titleA: "Party-ready",
-    titleB: "girls ensembles",
-    subtitle:
-      "Frocks, gowns and festive sets with breathable linings — made for birthdays, ceremonies and sparkle-filled days.",
-    cta: "Shop collection",
-    to: "/shop",
+    image: hero1,
     bg: "var(--peach)",
+    eyebrow: "Royal Collections",
+    titleA: "Traditional",
+    titleB: "Elegance",
+    subtitle: "Exquisite lehengas and cholis for your little princess.",
+    cta: "Explore Festive",
+    to: "/shop",
     align: "left" as const,
+  },
+  {
+    image: hero2,
+    bg: "var(--sunshine)",
+    eyebrow: "Designer Fits",
+    titleA: "Festive",
+    titleB: "Grandeur",
+    subtitle: "Grand gowns designed for memorable celebrations.",
+    cta: "Shop Gowns",
+    to: "/shop",
+    align: "right" as const,
   },
   {
     image: heroGirls1,
@@ -60,52 +70,141 @@ const slides = [
     bg: "var(--lavender)",
     align: "right" as const,
   },
-  {
-    image: heroGirls2,
-    eyebrow: "Festive staples",
-    titleA: "From tiny",
-    titleB: "traditions…",
-    subtitle: "Pink, maroon & gold classics with pleats, zari and joy in every swirl.",
-    cta: "Shop festive",
-    to: "/shop",
-    bg: "var(--mint)",
-    align: "left" as const,
-  },
-  {
-    image: heroGirls3,
-    eyebrow: "Curated hues",
-    titleA: "Colour stories",
-    titleB: "you’ll cherish",
-    subtitle: "Handpicked palettes for heirloom portraits and living-room celebrations alike.",
-    cta: "See new arrivals",
-    to: "/shop",
-    bg: "var(--peach)",
-    align: "right" as const,
-  },
-  {
-    image: heroHome4,
-    eyebrow: "Hyderabad boutique",
-    titleA: "Visit us via",
-    titleB: "WhatsApp fits",
-    subtitle:
-      "Order help, sizing notes and stitched ideas — ping us anytime for personalized picks from Kukatpally.",
-    cta: "Contact us",
-    to: "/contact",
-    bg: "var(--sky)",
-    align: "left" as const,
-  },
-  {
-    image: heroHome3,
-    eyebrow: "Quality promise",
-    titleA: "Comfort linings",
-    titleB: "behind glamour",
-    subtitle: "Cotton-soft layers where kids need them, so glamour never feels itchy.",
-    cta: "Read about us",
-    to: "/about",
-    bg: "var(--sunshine)",
-    align: "right" as const,
-  },
 ];
+
+/** Two full rows of the home featured grid: 2 cols × 2 → 4, 3×2 → 6, 4×2 → 8 */
+function getFeaturedTwoRowCount(): number {
+  return 14;
+}
+
+const HOME_FEATURED_LOAD_MORE = 4;
+/** Minimum spinner time on View more so the circular loader is visible (data is already local). */
+const HOME_VIEW_MORE_LOADER_MS = 380;
+
+/** Home spotlight surfaces newest SKU-style ids first (`p36` … `p1`) — shop catalogue order unchanged. */
+function homeSpotlightOrder(list: Product[]): Product[] {
+  return [...list].sort((a, b) => {
+    const na = Number(String(a.id).replace(/^p/i, ""));
+    const nb = Number(String(b.id).replace(/^p/i, ""));
+    return (Number.isFinite(nb) ? nb : 0) - (Number.isFinite(na) ? na : 0);
+  });
+}
+
+function FeaturedCelebrationSection() {
+  const [catalog, setCatalog] = useState<Product[] | null>(null);
+  const displayCatalog = useMemo(
+    () => (catalog ? homeSpotlightOrder(catalog) : null),
+    [catalog],
+  );
+  const featuredTotal = displayCatalog?.length ?? 0;
+  const [featuredVisible, setFeaturedVisible] = useState(14);
+  const [loadMoreBusy, setLoadMoreBusy] = useState(false);
+  const loadMoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void import("@/data/products").then((m) => {
+      if (!cancelled) setCatalog(m.products);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (loadMoreTimerRef.current !== null) {
+        clearTimeout(loadMoreTimerRef.current);
+        loadMoreTimerRef.current = null;
+      }
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!displayCatalog) return;
+    setFeaturedVisible(Math.min(displayCatalog.length, getFeaturedTwoRowCount()));
+  }, [displayCatalog]);
+
+  return (
+    <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
+      <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+        <div className="max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">
+            Spotlight
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            Kathyayani&apos;s <em className="font-italic-display font-semibold">celebration edit</em>
+          </h2>
+          <p className="mt-4 max-w-xl text-base text-muted-foreground sm:text-lg">
+            Party frocks, lehengas &amp; twinning — the pieces shoppers love right now from our
+            Hyderabad studio.
+          </p>
+        </div>
+        <Link
+          to="/shop"
+          className="inline-flex shrink-0 items-center gap-1.5 self-start text-sm font-bold uppercase tracking-wider text-foreground underline-offset-4 transition-colors hover:text-berry sm:self-auto"
+        >
+          Explore full collection
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
+      </div>
+      {!displayCatalog ? (
+        <div
+          className="flex min-h-[min(380px,50svh)] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-foreground/15 bg-muted/20"
+          role="status"
+          aria-live="polite"
+          aria-busy="true"
+        >
+          <Loader2 className="h-10 w-10 animate-spin text-berry" aria-hidden />
+          <span className="text-sm font-medium text-muted-foreground">Loading edits…</span>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {displayCatalog.slice(0, featuredVisible).map((p, i) => (
+              <ProductCard key={p.id} product={p} index={i} />
+            ))}
+          </div>
+          {featuredVisible < featuredTotal ? (
+            <div className="mt-10 flex flex-col items-center">
+              {loadMoreBusy ? (
+                <div
+                  className="flex min-h-[88px] w-full max-w-md flex-col items-center justify-center gap-3 rounded-2xl border border-border/60 bg-muted/20 py-10"
+                  role="status"
+                  aria-live="polite"
+                  aria-busy="true"
+                >
+                  <span
+                    className="inline-block h-10 w-10 shrink-0 rounded-full border-2 border-berry border-t-transparent opacity-90 animate-spin"
+                    aria-hidden
+                  />
+                  <span className="text-sm font-medium text-muted-foreground">Loading more pieces…</span>
+                  <span className="sr-only">Loading more products</span>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLoadMoreBusy(true);
+                    if (loadMoreTimerRef.current !== null) clearTimeout(loadMoreTimerRef.current);
+                    loadMoreTimerRef.current = setTimeout(() => {
+                      loadMoreTimerRef.current = null;
+                      setFeaturedVisible((n) => Math.min(featuredTotal, n + HOME_FEATURED_LOAD_MORE));
+                      setLoadMoreBusy(false);
+                    }, HOME_VIEW_MORE_LOADER_MS);
+                  }}
+                  className="inline-flex min-h-[48px] min-w-[200px] cursor-pointer items-center justify-center rounded-full border-2 border-foreground bg-background px-10 py-3 font-body text-sm font-bold uppercase tracking-[0.15em] text-foreground transition-colors hover:bg-foreground hover:text-background"
+                >
+                  View more
+                </button>
+              )}
+            </div>
+          ) : null}
+        </>
+      )}
+    </section>
+  );
+}
 
 function HomePage() {
   const [active, setActive] = useState(0);
@@ -121,10 +220,10 @@ function HomePage() {
 
   return (
     <div>
-      {/* HERO CAROUSEL — full viewport WIDTH (breakout); height unchanged; object-contain = whole photo visible (tint in letterboxing) */}
+      {/* HERO CAROUSEL — Full 100vh impact with centered content */}
       <section className="relative left-1/2 w-[100dvw] max-w-[100dvw] -translate-x-1/2 overflow-x-hidden">
         <div className="relative w-full max-w-none">
-          <div className="relative h-[min(48svh,420px)] w-full min-h-[300px] overflow-hidden sm:h-[min(50svh,460px)] sm:min-h-[320px] md:h-[min(52svh,500px)]">
+          <div className="relative h-[100vh] w-full min-h-[600px] overflow-hidden">
             {slides.map((s, i) => (
               <div
                 key={i}
@@ -137,48 +236,47 @@ function HomePage() {
                 <img
                   src={s.image}
                   alt={`${s.titleA} ${s.titleB}`}
-                  className="absolute inset-0 z-[1] h-full w-full max-w-none object-contain object-center"
+                  className="absolute inset-0 z-[1] h-full w-full max-w-none object-cover object-top"
                   draggable={false}
                 />
-                <div
-                  className={`pointer-events-none absolute inset-0 z-[2] ${
-                    s.align === "left"
-                      ? "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-r sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
-                      : "bg-gradient-to-t from-foreground/55 via-foreground/15 to-transparent sm:bg-gradient-to-l sm:from-foreground/45 sm:via-foreground/10 sm:to-transparent"
-                  }`}
-                />
-                <div
-                  className={`absolute inset-0 z-[3] flex items-end ${
-                    s.align === "left" ? "sm:items-center sm:justify-start" : "sm:items-center sm:justify-end"
-                  }`}
-                >
-                  <div className="w-full max-w-xl p-5 pb-10 sm:p-9 sm:pb-9 lg:p-12 lg:pb-11 text-background">
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-black/50 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
+
+                <div className={`absolute inset-0 z-[3] flex items-center p-6 sm:p-12 lg:p-24 ${s.align === 'left' ? 'justify-start text-left' : s.align === 'right' ? 'justify-end text-right' : 'justify-center text-center'}`}>
+                  <div className="w-full max-w-3xl text-background">
                     {i === active ? (
                       <>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-background/95 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-foreground animate-pop-in">
-                          <Sparkles className="h-3 w-3" /> {s.eyebrow}
-                        </span>
+                        <div className={`mb-6 flex animate-pop-in ${s.align === 'left' ? 'justify-start' : s.align === 'right' ? 'justify-end' : 'justify-center'}`}>
+                          <span className="rounded-full border border-primary px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-primary backdrop-blur-sm">
+                            {s.eyebrow}
+                          </span>
+                        </div>
                         <h1
-                          className="mt-4 font-display text-4xl leading-[0.98] sm:mt-5 sm:text-5xl sm:leading-[0.95] lg:text-[4.5rem] animate-fade-up"
+                          className="font-display text-6xl font-black leading-[0.9] tracking-tighter uppercase sm:text-7xl lg:text-[7.5rem] animate-fade-up drop-shadow-2xl text-primary"
                           style={{ animationDelay: "0.1s" }}
                         >
                           {s.titleA}
                           <br />
-                          <em className="font-italic-display">{s.titleB}</em>
+                          <span className="text-white">{s.titleB}</span>
                         </h1>
                         <p
-                          className="mt-4 max-w-md text-sm font-medium text-background/95 sm:mt-5 sm:text-base animate-fade-up"
+                          className={`mt-8 max-w-2xl text-base font-bold text-white/90 sm:mt-8 sm:text-xl animate-fade-up drop-shadow-lg ${s.align === 'left' ? 'mr-auto' : s.align === 'right' ? 'ml-auto' : 'mx-auto'}`}
                           style={{ animationDelay: "0.25s" }}
                         >
                           {s.subtitle}
                         </p>
-                        <Link
-                          to={s.to}
-                          className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-pop transition-all hover:bg-foreground hover:text-background sm:mt-7 animate-fade-up"
-                          style={{ animationDelay: "0.4s" }}
-                        >
-                          {s.cta} <ArrowRight className="h-4 w-4" />
-                        </Link>
+                        <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+                          <em className="font-italic-display text-primary text-xl sm:text-2xl lg:text-3xl font-semibold italic">
+                            "Build your vision with us"
+                          </em>
+                        </div>
+                        <div className="mt-10 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+                          <Link
+                            to={s.to}
+                            className="inline-flex items-center gap-4 rounded-full bg-primary px-12 py-5 text-base font-black uppercase tracking-widest text-background shadow-2xl transition-all hover:scale-105 hover:bg-white hover:text-primary active:scale-95"
+                          >
+                            {s.cta} <ArrowRight className="h-5 w-5" strokeWidth={3} />
+                          </Link>
+                        </div>
                       </>
                     ) : null}
                   </div>
@@ -186,32 +284,34 @@ function HomePage() {
               </div>
             ))}
 
-            <button
-              onClick={goPrev}
-              aria-label="Previous slide"
-              className="absolute left-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-background/85 text-foreground backdrop-blur transition-all hover:bg-background hover:scale-105 sm:grid"
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={goNext}
-              aria-label="Next slide"
-              className="absolute right-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-background/85 text-foreground backdrop-blur transition-all hover:bg-background hover:scale-105 sm:grid"
-            >
-              <ArrowRight className="h-5 w-5" />
-            </button>
-
-            <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  aria-label={`Slide ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === active ? "w-8 bg-background" : "w-1.5 bg-background/60 hover:bg-background/80"
-                  }`}
-                />
-              ))}
+            {/* Subtle Controls */}
+            <div className="absolute inset-x-0 bottom-12 z-[10] flex items-center justify-center gap-4">
+              <button
+                onClick={goPrev}
+                className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-black/20 text-white backdrop-blur-md transition-all hover:bg-primary hover:text-background"
+                aria-label="Previous slide"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+              <div className="flex gap-2.5">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`h-1.5 transition-all duration-300 ${
+                      i === active ? "w-8 rounded-full bg-primary" : "w-1.5 rounded-full bg-white/40"
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={goNext}
+                className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-black/20 text-white backdrop-blur-md transition-all hover:bg-primary hover:text-background"
+                aria-label="Next slide"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -237,87 +337,9 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORIES — girls-focused only */}
-      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">Shop the edit</p>
-            <h2 className="mt-2 font-display text-4xl sm:text-6xl">
-              Girls <em className="font-italic-display">festive staples</em>
-            </h2>
-          </div>
-          <Link to="/shop" className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-berry">
-            Shop everything <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
 
-        <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
-          {[
-            {
-              to: "/shop",
-              image: catParty,
-              title: "Party gowns",
-              color: "var(--sunshine)",
-              desc: "Layered skirts, bows & dramatic hems",
-            },
-            {
-              to: "/shop",
-              image: catFestive,
-              title: "Festive saree looks",
-              color: "var(--peach)",
-              desc: "Pattu moods, chunky work & heirloom polish",
-            },
-            {
-              to: "/girls",
-              image: catShop,
-              title: "Full girls closet",
-              color: "var(--mint)",
-              desc: "Handpicked staples for birthdays & pujas",
-            },
-          ].map((c) => (
-            <Link
-              key={c.title}
-              to={c.to}
-              className="group relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl"
-              style={{ backgroundColor: `color-mix(in oklab, ${c.color} 25%, var(--cream))` }}
-            >
-              <img
-                src={c.image}
-                alt={c.title}
-                loading="lazy"
-                className="h-full max-h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent p-6 text-background">
-                <h3 className="font-display text-4xl">{c.title}</h3>
-                <p className="text-sm font-medium opacity-95">{c.desc}</p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold">
-                  Explore <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
 
-      {/* FEATURED PRODUCTS */}
-      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-berry">Featured</p>
-            <h2 className="mt-2 font-display text-4xl sm:text-6xl">
-              Curated by <em className="font-italic-display">Kathyayani</em>
-            </h2>
-          </div>
-          <Link to="/shop" className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-berry">
-            Shop all pieces <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {products.map((p, i) => (
-            <ProductCard key={p.id} product={p} index={i} />
-          ))}
-        </div>
-      </section>
+      <FeaturedCelebrationSection />
 
       {/* MARQUEE */}
       <section className="mt-16 overflow-hidden border-y border-foreground/10 bg-foreground py-5 text-background sm:mt-24">
@@ -343,38 +365,50 @@ function HomePage() {
 
       {/* CTA */}
       <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-3xl bg-gradient-warm p-7 text-center sm:p-16">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-foreground/60">Styled by Kathyayani</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-6xl">
-            Outfit planning for <em className="font-italic-display">big days</em>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base font-medium text-foreground/75">
-            Share your event timeline and preferences — we reply with cohesive looks for siblings, cousins and photo-worthy moments alike.
-          </p>
-          <form
-            className="mx-auto mt-7 flex w-full max-w-md flex-col gap-2 sm:flex-row"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!email.trim()) return;
-              toast.success("Thanks! We'll share Kathyayani updates & restock notes soon.");
-              setEmail("");
-            }}
-          >
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1 rounded-full border border-border bg-background px-5 py-3.5 text-sm font-medium outline-none focus:border-berry focus:ring-2 focus:ring-berry/20"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-transform active:scale-95"
+        <div 
+          className="relative overflow-hidden rounded-3xl p-7 text-center sm:p-16"
+          style={{ 
+            backgroundImage: `url(${ctaBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          
+          <div className="relative z-10">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Styled by Kathyayani</p>
+            <h2 className="mt-4 font-display text-4xl text-white sm:text-7xl">
+              Outfit planning for <em className="font-italic-display text-primary">big days</em>
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-base font-medium text-white/80 sm:text-lg">
+              Share your event timeline and preferences — we reply with cohesive looks for siblings, cousins and photo-worthy moments alike.
+            </p>
+            <form
+              className="mx-auto mt-10 flex w-full max-w-md flex-col gap-3 sm:flex-row"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!email.trim()) return;
+                toast.success("Thanks! We'll share Kathyayani updates & restock notes soon.");
+                setEmail("");
+              }}
             >
-              Subscribe
-            </button>
-          </form>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 rounded-full border border-white/20 bg-black/40 px-6 py-4 text-sm font-medium text-white placeholder:text-white/40 outline-none backdrop-blur-md focus:border-primary focus:ring-2 focus:ring-primary/20"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-primary px-8 py-4 text-sm font-black uppercase tracking-widest text-background shadow-xl transition-all hover:scale-105 active:scale-95"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </div>

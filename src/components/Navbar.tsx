@@ -5,11 +5,10 @@ import { Logo } from "./Logo";
 import { useCart } from "@/store/cart";
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
-  { to: "/girls", label: "Girls" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", exact: true },
+  { to: "/shop", label: "Shop", exact: false },
+  { to: "/about", label: "About", exact: false },
+  { to: "/contact", label: "Contact", exact: false },
 ] as const;
 
 export function Navbar() {
@@ -50,10 +49,10 @@ export function Navbar() {
       }`}
     >
       {/* Promo bar */}
-      <div className="bg-foreground text-background">
+      <div className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-3 py-2 text-center text-[10px] font-medium leading-relaxed tracking-wide sm:text-[11px]">
           Kathyayani Kids Wear · Free shipping on eligible orders · Hyderabad (Kukatpally) • Use code{" "}
-          <span className="rounded-full bg-background/15 px-2 py-0.5 font-semibold">KATH10</span>{" "}
+          <span className="rounded-full bg-background/20 px-2 py-0.5 font-semibold">KATH10</span>{" "}
           for 10% off
         </div>
       </div>
@@ -69,16 +68,17 @@ export function Navbar() {
 
         <Logo className="mr-auto lg:mr-6" />
 
-        <nav className="mx-auto hidden items-center gap-1 lg:flex">
+        <nav className="mx-auto hidden items-center gap-1 lg:flex" aria-label="Primary">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               className="relative rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
               activeProps={{
-                className: "text-foreground font-semibold",
+                className:
+                  "bg-primary/10 text-primary font-semibold ring-1 ring-primary/20",
               }}
-              activeOptions={{ exact: l.to === "/" }}
+              activeOptions={{ exact: l.exact }}
             >
               {l.label}
             </Link>
@@ -149,8 +149,10 @@ export function Navbar() {
                 key={l.to}
                 to={l.to}
                 className="rounded-xl px-4 py-3 text-base font-semibold text-foreground/80 hover:bg-accent"
-                activeProps={{ className: "bg-accent text-accent-foreground" }}
-                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{
+                  className: "bg-berry/15 text-foreground ring-1 ring-berry/30",
+                }}
+                activeOptions={{ exact: l.exact }}
               >
                 {l.label}
               </Link>

@@ -88,7 +88,7 @@ function ContactPage() {
           ].map((c, i) => {
             const Inner = (
               <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft transition-transform hover:-translate-y-0.5">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-berry">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/20 text-primary">
                   <c.icon className="h-5 w-5" />
                 </span>
                 <div>

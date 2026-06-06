@@ -36,9 +36,9 @@ function ActionIconButton({
             e.stopPropagation();
             onClick(e);
           }}
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-foreground shadow-md ring-1 ring-black/5 transition-transform hover:scale-105 hover:bg-white active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-black/40 text-white backdrop-blur-md ring-1 ring-white/20 transition-all hover:scale-110 hover:bg-primary hover:text-background active:scale-95 focus-visible:outline-none"
         >
-          <span className={active ? "text-berry" : ""}>{children}</span>
+          <span>{children}</span>
         </button>
       </TooltipTrigger>
       <TooltipContent side="top" className="font-medium">
@@ -48,15 +48,30 @@ function ActionIconButton({
   );
 }
 
-export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
+export function ProductCard({
+  product,
+  index = 0,
+  compact = true,
+  layout = "grid",
+  listingStyle = "default",
+}: {
+  product: Product;
+  index?: number;
+  /** Listing: name + age + price without long copy (details on PDP). */
+  compact?: boolean;
+  layout?: "grid" | "list";
+  /** `catalog` = centered type, light frame, editorial grid (shop reference). */
+  listingStyle?: "default" | "catalog";
+}) {
   const discount =
     product.mrp > product.price
       ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
       : 0;
   const categoryLabel =
     product.category.charAt(0).toUpperCase() + product.category.slice(1);
-
   const defaultSize = product.sizes[0] ?? "";
+  const isList = layout === "list";
+  const isCatalog = listingStyle === "catalog" && compact && !isList;
   const addItem = useCart((s) => s.addItem);
   const openCart = useCart((s) => s.open);
   const toggleWishlist = useWishlist((s) => s.toggle);
@@ -93,19 +108,30 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
   return (
     <>
       <article
-        className="group animate-fade-up"
+        className="group animate-fade-up h-full"
         style={{ animationDelay: `${index * 60}ms` }}
       >
-        <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-pop">
+        <div
+          className={`overflow-hidden transition-all duration-300 ${
+            isCatalog
+              ? "flex min-h-0 h-full flex-col rounded-sm border border-border/40 bg-background shadow-none hover:shadow-md"
+              : `rounded-2xl border border-border/70 bg-card shadow-card group-hover:-translate-y-1 group-hover:shadow-pop ${
+                  isList
+                    ? "grid h-full min-h-[5.75rem] grid-cols-[minmax(5.5rem,7.5rem)_1fr] items-stretch sm:min-h-[6.75rem] sm:grid-cols-[minmax(7rem,9rem)_1fr]"
+                    : "flex min-h-0 h-full flex-col"
+                }`
+          }`}
+        >
           <div
-            className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-cream"
+            className={`relative flex w-full shrink-0 items-center justify-center overflow-hidden bg-cream ${
+              isList ? "aspect-square" : isCatalog ? "aspect-[3/4]" : "aspect-[4/5]"
+            }`}
             style={{
               backgroundColor: `color-mix(in oklab, ${product.colorChip} 12%, var(--cream))`,
             }}
           >
             <Link
-              to="/product/$slug"
-              params={{ slug: product.slug }}
+              to={`/product/${encodeURIComponent(product.slug)}`}
               className="absolute inset-0 z-0"
               aria-label={`View ${product.name}`}
             />
@@ -113,9 +139,9 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               src={product.images[0]}
               alt=""
               loading="lazy"
-              className="relative z-[1] h-full max-h-full w-full object-contain p-1 pointer-events-none transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              className={`relative z-[1] h-full max-h-full object-contain p-1 pointer-events-none transition-transform duration-700 ease-out group-hover:scale-[1.02] ${isList ? "w-full" : "w-full"}`}
             />
-            {product.images[1] && (
+            {!compact && product.images[1] && (
               <img
                 src={product.images[1]}
                 alt=""
@@ -124,77 +150,165 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               />
             )}
 
-            <div className="pointer-events-none absolute left-3 top-3 z-[2] flex flex-wrap items-center gap-1.5">
-              <span className="rounded-full bg-background/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">
-                {categoryLabel}
+            {isCatalog ? (
+              <span className="pointer-events-none absolute bottom-3 right-3 z-[2] select-none font-body text-[9px] font-semibold uppercase tracking-[0.25em] text-foreground/20 sm:bottom-4 sm:right-4 sm:text-[10px]">
+                Kathyayani
               </span>
-              {product.badge && (
-                <span className="rounded-full bg-foreground px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-background">
-                  {product.badge}
+            ) : null}
+
+            {!compact ? (
+              <div className="pointer-events-none absolute left-3 top-3 z-[2] flex flex-wrap items-center gap-1.5">
+                <span className="rounded-full bg-background/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">
+                  {categoryLabel}
                 </span>
-              )}
-              {discount > 0 && (
-                <span className="rounded-full bg-berry px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-berry-foreground">
-                  Save {discount}%
-                </span>
-              )}
-            </div>
+                {product.badge && (
+                  <span className="rounded-full bg-foreground px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-background">
+                    {product.badge}
+                  </span>
+                )}
+                {discount > 0 && (
+                  <span className="rounded-full bg-berry px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-berry-foreground">
+                    Save {discount}%
+                  </span>
+                )}
+              </div>
+            ) : null}
 
             {/* Hover actions: favourite, cart, quick view */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-3 z-[3] flex justify-center px-2 opacity-100 transition-all duration-300 sm:bottom-4 sm:translate-y-1 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
-              <div className="pointer-events-auto flex items-center gap-2">
+            <div className="pointer-events-none absolute inset-0 z-[3] flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="pointer-events-auto flex items-center gap-3">
                 <ActionIconButton
                   label="Add to favourite"
                   active={isFavorite}
                   onClick={handleFavorite}
                 >
                   <Heart
-                    className={`h-4 w-4 ${isFavorite ? "fill-current" : ""}`}
-                    strokeWidth={1.75}
+                    className={`h-5 w-5 ${isFavorite ? "fill-primary text-primary" : "text-white"}`}
+                    strokeWidth={2}
                   />
                 </ActionIconButton>
                 <ActionIconButton label="Add to cart" onClick={handleAddToCart}>
-                  <ShoppingBag className="h-4 w-4" strokeWidth={1.75} />
+                  <ShoppingBag className="h-5 w-5 text-white" strokeWidth={2} />
                 </ActionIconButton>
                 <ActionIconButton label="Quick view" onClick={() => setQuickOpen(true)}>
-                  <Eye className="h-4 w-4" strokeWidth={1.75} />
+                  <Eye className="h-5 w-5 text-white" strokeWidth={2} />
                 </ActionIconButton>
               </div>
             </div>
           </div>
 
           <Link
-            to="/product/$slug"
-            params={{ slug: product.slug }}
-            className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/60"
+            to={`/product/${encodeURIComponent(product.slug)}`}
+            className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/60 min-w-0 ${
+              isList
+                ? "flex min-h-0 min-w-0 flex-1 flex-col justify-center px-3 py-2.5 sm:px-4 sm:py-3"
+                : "flex min-h-0 flex-1 flex-col"
+            }`}
           >
-            <div className="space-y-1.5 px-3 pb-3 pt-2.5 sm:px-3.5 sm:pb-3.5 sm:pt-3">
-              {product.tag ? (
-                <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-                  {product.tag}
-                </p>
-              ) : null}
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <h3 className="line-clamp-1 font-body text-sm font-semibold text-foreground sm:text-[15px]">
+            {isList ? (
+              <div className="flex w-full min-h-0 min-w-0 flex-1 items-stretch justify-between gap-4">
+                <div className="flex min-w-0 flex-1 flex-col justify-center">
+                  {!compact && product.tag ? (
+                    <p className="mb-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                      {product.tag}
+                    </p>
+                  ) : null}
+                  <h3 className="line-clamp-2 font-body text-sm font-semibold text-foreground sm:text-[15px]">
                     {product.name}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-muted-foreground sm:text-xs sm:leading-5">
-                    {product.shortDescription}
-                  </p>
+                  {compact ? (
+                    <p className="mt-0.5 text-[10px] font-medium text-muted-foreground sm:text-[11px]">{product.ageLabel}</p>
+                  ) : null}
+                  {!compact ? (
+                    <>
+                      <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-muted-foreground sm:text-xs sm:leading-5">
+                        {product.shortDescription}
+                      </p>
+                      <p className="mt-0.5 text-[10px] font-medium text-muted-foreground sm:text-[11px]">
+                        {product.ageLabel}
+                      </p>
+                      {product.stockNote ? (
+                        <p className="mt-0.5 text-[10px] font-semibold text-berry sm:text-[11px]">{product.stockNote}</p>
+                      ) : null}
+                    </>
+                  ) : null}
                 </div>
-                <div className="shrink-0 text-right">
-                  <p className="font-body text-[15px] font-semibold text-foreground sm:text-base">
+                <div className="flex shrink-0 flex-col justify-end pb-0.5 text-right">
+                  <p className="font-body text-[15px] font-semibold leading-tight text-foreground sm:text-base">
                     ₹{product.price.toLocaleString("en-IN")}
                   </p>
                   {product.mrp > product.price && (
-                    <p className="text-[11px] font-medium text-muted-foreground line-through">
+                    <p className="mt-0.5 text-[11px] font-medium leading-tight text-muted-foreground line-through">
                       ₹{product.mrp.toLocaleString("en-IN")}
                     </p>
                   )}
                 </div>
               </div>
-            </div>
+            ) : isCatalog ? (
+              <div className="flex flex-1 flex-col items-center justify-center px-3 pb-8 pt-5 text-center sm:px-4 sm:pb-9 sm:pt-6">
+                <h3 className="line-clamp-3 max-w-full font-body text-[11px] font-semibold uppercase leading-snug tracking-[0.08em] text-foreground sm:text-xs">
+                  {product.name}
+                </h3>
+                <p className="mt-2 max-w-[18ch] font-body text-[10px] font-medium leading-snug text-muted-foreground sm:text-[11px]">
+                  {product.ageLabel}
+                </p>
+                <div className="mt-3 flex flex-col items-center gap-0.5">
+                  <p className="font-body text-sm font-semibold tracking-wide text-foreground sm:text-[15px]">
+                    ₹{product.price.toLocaleString("en-IN")}
+                  </p>
+                  {product.mrp > product.price ? (
+                    <p className="text-[11px] font-medium text-muted-foreground line-through">
+                      ₹{product.mrp.toLocaleString("en-IN")}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-1 flex-col px-3 pb-3 pt-2.5 sm:px-3.5 sm:pb-3.5 sm:pt-3">
+                {!compact && product.tag ? (
+                  <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                    {product.tag}
+                  </p>
+                ) : null}
+                <div className="flex min-h-[4.75rem] flex-1 items-stretch justify-between gap-3 sm:min-h-[5rem]">
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <h3
+                      className={`font-body font-semibold leading-snug text-foreground ${compact ? "line-clamp-2 text-sm sm:text-[15px]" : "line-clamp-1 text-sm sm:text-[15px]"}`}
+                    >
+                      {product.name}
+                    </h3>
+                    {compact ? (
+                      <p className="mt-0.5 shrink-0 text-[10px] font-medium leading-tight text-muted-foreground sm:text-[11px]">
+                        {product.ageLabel}
+                      </p>
+                    ) : null}
+                    {!compact ? (
+                      <>
+                        <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-muted-foreground sm:text-xs sm:leading-5">
+                          {product.shortDescription}
+                        </p>
+                        <p className="mt-0.5 text-[10px] font-medium text-muted-foreground sm:text-[11px]">
+                          {product.ageLabel}
+                        </p>
+                        {product.stockNote ? (
+                          <p className="mt-0.5 text-[10px] font-semibold text-berry sm:text-[11px]">{product.stockNote}</p>
+                        ) : null}
+                      </>
+                    ) : null}
+                  </div>
+                  <div className="flex shrink-0 flex-col justify-end pb-0.5 text-right">
+                    <p className="font-body text-[15px] font-semibold leading-tight text-foreground sm:text-base">
+                      ₹{product.price.toLocaleString("en-IN")}
+                    </p>
+                    {product.mrp > product.price && (
+                      <p className="mt-0.5 text-[11px] font-medium leading-tight text-muted-foreground line-through">
+                        ₹{product.mrp.toLocaleString("en-IN")}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </Link>
         </div>
       </article>
@@ -219,6 +333,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
                 <DialogTitle className="font-display text-xl leading-tight">
                   {product.name}
                 </DialogTitle>
+                <p className="text-sm font-medium text-muted-foreground">{product.ageLabel}</p>
                 <DialogDescription className="line-clamp-3 text-left">
                   {product.shortDescription}
                 </DialogDescription>
@@ -232,8 +347,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
                 )}
               </p>
               <Link
-                to="/product/$slug"
-                params={{ slug: product.slug }}
+                to={`/product/${encodeURIComponent(product.slug)}`}
                 onClick={() => setQuickOpen(false)}
                 className="inline-flex w-fit items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
               >
