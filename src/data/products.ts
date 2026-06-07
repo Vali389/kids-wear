@@ -36,6 +36,15 @@ import partywearFrock342 from "@/assets/partywaerfrock3-4-2.jpeg";
 import partyLongFrock1215 from "@/assets/partywearlongfrog12-15.jpeg";
 import mustardLongFrock1015 from "@/assets/eleganntmutsarrdyeloowlongfronk10-15.jpeg";
 import girlsSpotlightHero from "@/assets/girls-herosectionew-1.jpeg";
+import pochampallySkirBlouse810 from "@/assets/pochampally-pattu-skirt-8-10.jpeg";
+import panchesPaijamaNB2 from "@/assets/panche-paijama-set-new-born-2.jpeg";
+import pureBanarisiPanchePaijama from "@/assets/pure-banarasi-panchepaijamaset-newborn-2.jpeg";
+import pureBanarisiPanchePaijama2 from "@/assets/pure-banarasi-panchepaijamaset-newborn-img-2.jpeg";
+import premiumBoysKurthaPurple from "@/assets/premium-boys-ethnic-kurtha-rich-purple-fabric.img-1.jpeg";
+import premiumBoysKurthaOliveGreen from "@/assets/premium-boys-ethnic-kurtha-oilgreenwithgold-zari-fabric.img-2.jpeg";
+import premiumBoysKurthaMagenta from "@/assets/premium-boys-ethnic-kurtha-magnetic-pink-fabric.img-3.jpeg";
+import premiumBoysKurthaMustard from "@/assets/premium-boys-ethnic-kurtha-mustarrd-yellow-fabric.img-4.jpeg";
+import comboSet312 from "@/assets/combo-set-3-12.jpeg";
 
 export type Category = "baby" | "girls" | "ladies" | "boys";
 
@@ -741,6 +750,184 @@ export const products: Product[] = [
     care: "Gentle hand wash • Dry in shade",
     sizes: ["4-5Y", "6-7Y", "8-9Y", "10-11Y"],
     images: img(girlsSpotlightHero),
+  },
+
+  // ── NEW PRODUCTS ─────────────────────────────────────────────────────────────
+
+  {
+    id: "p39",
+    slug: "pochampally-pattu-skirt-blouse-8-10",
+    name: "Pochampally Pattu Skirt & Blouse",
+    price: 2200,
+    mrp: 2699,
+    category: "girls",
+    ageBuckets: ["6-12y"],
+    ageLabel: "Age: 8–10 years",
+    tag: "Traditional",
+    badge: "Pochampally",
+    colorChip: "#E05C15",
+    shortDescription: "Authentic Pochampally pattu skirt & blouse. ₹2,200",
+    description:
+      "Authentic Pochampally pattu skirt and blouse set in vibrant orange with a rich purple woven border. Traditional Pochampally ikat weave with intricate gold motifs — perfect for festive occasions, classical dance performances and family celebrations.",
+    fabric: "Pure Pochampally Pattu (Silk)",
+    care: "Dry clean recommended",
+    sizes: ["8-10Y"],
+    images: img(pochampallySkirBlouse810),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p40",
+    slug: "panche-paijama-set-newborn-2-years",
+    name: "Panche Paijama Set — Newborn to 2 Years",
+    price: 950,
+    mrp: 1199,
+    category: "boys",
+    ageBuckets: ["0-12m", "1-3y"],
+    ageLabel: "Age: Newborn to 2 years",
+    tag: "Boys",
+    badge: "Festive",
+    colorChip: "#4B3F9E",
+    shortDescription: "Traditional panche paijama for baby boys. ₹950",
+    description:
+      "Adorable traditional panche paijama set for baby boys from newborn to 2 years. Features a rich purple kurta with intricate gold floral brocade all over and a classic ivory dhoti-style panche with gold border — perfect for naming ceremonies, festivals and family celebrations.",
+    fabric: "Premium Brocade / Silk Blend",
+    care: "Dry clean recommended • Handle gently",
+    sizes: ["Newborn", "0-6M", "6-12M", "1-2Y"],
+    images: img(panchesPaijamaNB2),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p41",
+    slug: "pure-banarasi-panche-paijama-newborn-2-years",
+    name: "Pure Banarasi Panche Paijama Set",
+    price: 1200,
+    mrp: 1499,
+    category: "boys",
+    ageBuckets: ["0-12m", "1-3y"],
+    ageLabel: "Age: Newborn to 2 years",
+    tag: "Boys",
+    badge: "Pure Banarasi",
+    colorChip: "#C0106A",
+    shortDescription: "Pure Banarasi silk panche paijama set. ₹1,200",
+    description:
+      "Luxurious pure Banarasi panche paijama set for baby boys from newborn to 2 years. Rich magenta/pink kurta with gold Banarasi brocade all over paired with a royal blue Banarasi dhoti panche featuring gold motifs and traditional border. Ideal for naming ceremonies, festivals and special occasions.",
+    fabric: "Pure Banarasi Silk",
+    care: "Dry clean only",
+    sizes: ["Newborn", "0-6M", "6-12M", "1-2Y"],
+    images: [pureBanarisiPanchePaijama, pureBanarisiPanchePaijama2],
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p42",
+    slug: "premium-boys-ethnic-kurtha-royal-purple",
+    name: "Premium Boys Ethnic Kurta — Royal Purple",
+    price: 350,
+    mrp: 599,
+    category: "boys",
+    ageBuckets: ["1-3y", "3-6y", "6-12y"],
+    ageLabel: "Ages: 1–8 years",
+    tag: "Boys",
+    badge: "Premium",
+    colorChip: "#7B3FA0",
+    shortDescription: "Peacock & lotus print kurta in royal purple. From ₹350",
+    description:
+      "Premium boys ethnic kurta crafted from rich purple fabric featuring elegant peacock and lotus floral motifs throughout. Traditional border detailing and mandarin collar for a regal festive look. Perfect for weddings, festivals and traditional celebrations. Price by size: 1–2Y ₹350 • 3–4Y ₹550 • 4–5Y ₹700 • 5–6Y ₹850 • 6–7Y ₹1,000 • 7–8Y ₹1,150.",
+    fabric: "Cotton Blend",
+    care: "Gentle hand wash • Dry in shade",
+    sizes: ["1-2Y", "3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y"],
+    images: img(premiumBoysKurthaPurple),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p43",
+    slug: "premium-boys-ethnic-kurtha-olive-green-gold-zari",
+    name: "Premium Boys Ethnic Kurta — Olive Green & Gold Zari",
+    price: 400,
+    mrp: 699,
+    category: "boys",
+    ageBuckets: ["3-6y", "6-12y"],
+    ageLabel: "Ages: 3–12 years",
+    tag: "Boys",
+    badge: "Premium",
+    colorChip: "#6B7A2A",
+    shortDescription: "Woven gold zari motifs on olive green silk blend. From ₹400",
+    description:
+      "Premium boys ethnic kurta in rich olive green with gold zari featuring traditional woven zari motifs and a rich gold zari woven border. Mandarin collar and full sleeves for a distinguished festive look. Perfect for weddings, festivals, religious ceremonies and special celebrations. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
+    fabric: "Premium Silk Blend",
+    care: "Dry clean recommended",
+    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
+    images: img(premiumBoysKurthaOliveGreen),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p44",
+    slug: "premium-boys-ethnic-kurtha-magenta-pink",
+    name: "Premium Boys Ethnic Kurta — Magenta Pink",
+    price: 400,
+    mrp: 699,
+    category: "boys",
+    ageBuckets: ["3-6y", "6-12y"],
+    ageLabel: "Ages: 3–12 years",
+    tag: "Boys",
+    badge: "Premium",
+    colorChip: "#C0106A",
+    shortDescription: "Checkered weave with embroidered motifs in magenta pink. From ₹400",
+    description:
+      "Premium boys ethnic kurta in striking magenta pink with a checkered weave and embroidered motifs throughout. Traditional zari-woven border and mandarin collar for a bold festive statement. Ideal for weddings, festivals, traditional functions and family celebrations. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
+    fabric: "Premium Silk Blend / Jacquard",
+    care: "Dry clean recommended",
+    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
+    images: img(premiumBoysKurthaMagenta),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p45",
+    slug: "premium-boys-ethnic-kurtha-mustard-yellow",
+    name: "Premium Boys Ethnic Kurta — Mustard Yellow",
+    price: 400,
+    mrp: 699,
+    category: "boys",
+    ageBuckets: ["3-6y", "6-12y"],
+    ageLabel: "Ages: 3–12 years",
+    tag: "Boys",
+    badge: "Premium",
+    colorChip: "#D4860A",
+    shortDescription: "Embroidered motifs & heritage border on mustard yellow. From ₹400",
+    description:
+      "Premium boys ethnic kurta in warm mustard yellow with embroidered motifs and a heritage-inspired border design featuring camel and palm tree folk art patterns. Mandarin collar and full sleeves for a rich traditional look. Perfect for weddings, festivals, cultural celebrations and traditional functions. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
+    fabric: "Premium Silk Blend",
+    care: "Dry clean recommended",
+    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
+    images: img(premiumBoysKurthaMustard),
+    stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p46",
+    slug: "combo-set-boys-girls-ethnic-3-12",
+    name: "Combo Set — Boys & Girls Ethnic Wear",
+    price: 1400,
+    mrp: 1799,
+    category: "boys",
+    ageBuckets: ["3-6y", "6-12y"],
+    ageLabel: "Ages: 3–12 years",
+    tag: "Combo",
+    badge: "Combo Set",
+    colorChip: "#D4860A",
+    shortDescription: "Matching ethnic combo set for boys & girls. From ₹1,400",
+    description:
+      "Beautiful matching ethnic combo set featuring a mustard yellow boys kurta with heritage folk embroidery and a coordinating girls lehenga skirt & blouse with floral embroidered top. Perfect for sibling twinning at weddings, festivals and family celebrations. Price by size: 3–4Y ₹1,400 • 4–5Y ₹1,550 • 5–6Y ₹1,700 • 6–7Y ₹1,850 • 7–8Y ₹2,000 • 8–9Y ₹2,150 • 9–10Y ₹2,300 • 10–11Y ₹2,450 • 11–12Y ₹2,600.",
+    fabric: "Premium Silk Blend",
+    care: "Dry clean recommended",
+    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
+    images: img(comboSet312),
+    stockNote: "Quantity 1 available",
   },
 ];
 

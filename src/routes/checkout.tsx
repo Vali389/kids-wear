@@ -42,12 +42,21 @@ function CheckoutPage() {
       return;
     }
 
+    // Build the site base URL so image & product links are absolute
+    const siteBase = window.location.origin;
+
     const itemLines = items
-      .map(
-        (i, idx) =>
-          `${idx + 1}. ${i.name} | Size: ${i.size} | Qty: ${i.qty} | ₹${(i.price * i.qty).toLocaleString("en-IN")}`,
-      )
-      .join("\n");
+      .map((i, idx) => {
+        const productUrl = `${siteBase}/product/${i.slug}`;
+        const imageUrl = i.image.startsWith("http") ? i.image : `${siteBase}${i.image}`;
+        return (
+          `${idx + 1}. *${i.name}*\n` +
+          `   Size: ${i.size} | Qty: ${i.qty} | ₹${(i.price * i.qty).toLocaleString("en-IN")}\n` +
+          `   🖼️ Product image: ${imageUrl}\n` +
+          `   🔗 Product page: ${productUrl}`
+        );
+      })
+      .join("\n\n");
 
     const msg = `🌈 *NEW ORDER — Kathyayani Kids Wear*
 
