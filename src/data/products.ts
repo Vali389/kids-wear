@@ -45,6 +45,8 @@ import premiumBoysKurthaOliveGreen from "@/assets/premium-boys-ethnic-kurtha-oil
 import premiumBoysKurthaMagenta from "@/assets/premium-boys-ethnic-kurtha-magnetic-pink-fabric.img-3.jpeg";
 import premiumBoysKurthaMustard from "@/assets/premium-boys-ethnic-kurtha-mustarrd-yellow-fabric.img-4.jpeg";
 import comboSet312 from "@/assets/combo-set-3-12.jpeg";
+import premiumRedTraditionalDress from "@/assets/premium-red-traditional-party-wear-dress-girls.jpeg";
+import elegantGreenRedEthnicDress from "@/assets/elegant-green-red-ethnic-party-wear-dress-girls.jpeg";
 
 export type Category = "baby" | "girls" | "ladies" | "boys";
 
@@ -928,6 +930,48 @@ export const products: Product[] = [
     sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
     images: img(comboSet312),
     stockNote: "Quantity 1 available",
+  },
+
+  {
+    id: "p47",
+    slug: "premium-red-traditional-party-wear-dress-girls",
+    name: "Premium Red Traditional Party Wear Dress",
+    price: 1650,
+    mrp: 1999,
+    category: "girls",
+    ageBuckets: ["1-3y"],
+    ageLabel: "Age: 2–3 years",
+    tag: "Traditional",
+    badge: "Festive",
+    colorChip: "#C0122C",
+    shortDescription: "Rich red festive fabric, golden zari border, puff sleeves. ₹1,650",
+    description:
+      "Dress your little princess in elegance with this stunning red ethnic frock crafted from rich festive fabric. Featuring beautiful golden zig-zag weaving throughout the dress, the highlight is the grand floral woven border adorned with colorful floral motifs and intricate zari detailing. The stylish puff sleeves with traditional border accents add a royal touch. Ideal for festivals, weddings, birthdays and special occasions.",
+    fabric: "Rich festive fabric with golden woven design",
+    care: "Dry clean recommended • Handle zari border gently",
+    sizes: ["2-3Y"],
+    images: img(premiumRedTraditionalDress),
+  },
+
+  {
+    id: "p48",
+    slug: "elegant-green-red-ethnic-party-wear-dress-girls",
+    name: "Elegant Green & Red Ethnic Party Wear Dress",
+    price: 1850,
+    mrp: 2199,
+    category: "baby",
+    ageBuckets: ["0-12m"],
+    ageLabel: "Age: 12–18 months",
+    tag: "Ethnic",
+    badge: "Banarasi",
+    colorChip: "#1A6B3C",
+    shortDescription: "Green Banarasi skirt, red embroidered blouse, frill sleeves. ₹1,850",
+    description:
+      "Make your little princess shine in this beautiful traditional dress featuring a rich green Banarasi-style skirt adorned with intricate gold floral motifs and a luxurious woven border. The vibrant red blouse is highlighted with stunning floral embroidery and stylish layered frill sleeves, creating a festive and elegant look. Perfect for weddings, birthdays, festivals and special events.",
+    fabric: "Premium green jacquard / Banarasi fabric skirt with embroidered red blouse",
+    care: "Dry clean recommended",
+    sizes: ["12-18M"],
+    images: img(elegantGreenRedEthnicDress),
   },
 ];
 
