@@ -95,9 +95,14 @@ export function Footer() {
               202, Niharika residency, Sardar Patel nagar, Kukatpally, Hyderabad — 500085
             </p>
           </div>
-          <p className="inline-flex items-center gap-1">
-            Made with <Heart className="h-3.5 w-3.5 fill-berry text-berry" /> for little ones
-          </p>
+          <div className="flex flex-col items-center gap-1 text-center sm:items-end sm:text-right">
+            <p className="inline-flex items-center gap-1">
+              Made with <Heart className="h-3.5 w-3.5 fill-berry text-berry" /> for little ones
+            </p>
+            <p className="text-[10px] text-muted-foreground/80">
+              Developed by Babu (<a href="tel:9014084396" className="hover:text-foreground">9014084396</a>)
+            </p>
+          </div>
         </div>
       </div>
     </footer>
