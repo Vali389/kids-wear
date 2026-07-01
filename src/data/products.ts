@@ -14,7 +14,6 @@ import greyFloral34 from "@/assets/Charming floral frock in a soft grey tone3-4.
 import redPartyBlack45 from "@/assets/Stylish red party frock featuring a rich black4-5.jpeg";
 import pastelBlue45 from "@/assets/Elegant pastel blue party frock4-5.jpeg";
 import yellowLehengaMulti from "@/assets/Beautiful lehenga set featuring a vibrant yellow3-4,4-5,5-6,6-8.jpeg";
-import redGown810 from "@/assets/Stunning red party gown featuring elegant gold 8-10.jpeg";
 import mustardDress56 from "@/assets/This brightmustratdyellowdress5-6.jpeg";
 import blackLehenga1214 from "@/assets/This elegant lehenga set will have a graceful, slightly flared fit with a traditional touch12-14.jpeg";
 import yellowLongGownLadies from "@/assets/Elegant yellow long gown featuring a flattering V-neck and full sleeves25-30.jpeg";
@@ -36,7 +35,6 @@ import partywearFrock342 from "@/assets/partywaerfrock3-4-2.jpeg";
 import partyLongFrock1215 from "@/assets/partywearlongfrog12-15.jpeg";
 import mustardLongFrock1015 from "@/assets/eleganntmutsarrdyeloowlongfronk10-15.jpeg";
 import girlsSpotlightHero from "@/assets/girls-herosectionew-1.jpeg";
-import pochampallySkirBlouse810 from "@/assets/pochampally-pattu-skirt-8-10.jpeg";
 import panchesPaijamaNB2 from "@/assets/panche-paijama-set-new-born-2.jpeg";
 import pureBanarisiPanchePaijama from "@/assets/pure-banarasi-panchepaijamaset-newborn-2.jpeg";
 import pureBanarisiPanchePaijama2 from "@/assets/pure-banarasi-panchepaijamaset-newborn-img-2.jpeg";
@@ -46,7 +44,6 @@ import premiumBoysKurthaMagenta from "@/assets/premium-boys-ethnic-kurtha-magnet
 import premiumBoysKurthaMustard from "@/assets/premium-boys-ethnic-kurtha-mustarrd-yellow-fabric.img-4.jpeg";
 import comboSet312 from "@/assets/combo-set-3-12.jpeg";
 import premiumRedTraditionalDress from "@/assets/premium-red-traditional-party-wear-dress-girls.jpeg";
-import elegantGreenRedEthnicDress from "@/assets/elegant-green-red-ethnic-party-wear-dress-girls.jpeg";
 
 export type Category = "baby" | "girls" | "ladies" | "boys";
 
@@ -366,25 +363,6 @@ export const products: Product[] = [
     care: "Dry clean recommended",
     sizes: ["3-4Y", "4-5Y", "5-6Y", "6-8Y"],
     images: img(yellowLehengaMulti),
-  },
-  {
-    id: "p17",
-    slug: "stunning-red-party-gown",
-    name: "Stunning red party gown",
-    price: 1599,
-    mrp: 1999,
-    category: "girls",
-    ageBuckets: ["6-12y"],
-    ageLabel: "Age: 8–10 years",
-    tag: "Gown",
-    colorChip: "var(--berry)",
-    shortDescription: "Gold detail, layered ruffles, bows. ₹1,599",
-    description:
-      "Stunning red party gown with elegant gold detailing and layered ruffle design for a rich, voluminous look. Bows on shoulders and waist — parties and functions.",
-    fabric: "Festive gown fabric with lining",
-    care: "Dry clean recommended",
-    sizes: ["8-10Y"],
-    images: img(redGown810),
   },
   {
     id: "p18",
@@ -756,27 +734,6 @@ export const products: Product[] = [
 
   // ── NEW PRODUCTS ─────────────────────────────────────────────────────────────
 
-  {
-    id: "p39",
-    slug: "pochampally-pattu-skirt-blouse-8-10",
-    name: "Pochampally Pattu Skirt & Blouse",
-    price: 2200,
-    mrp: 2699,
-    category: "girls",
-    ageBuckets: ["6-12y"],
-    ageLabel: "Age: 8–10 years",
-    tag: "Traditional",
-    badge: "Pochampally",
-    colorChip: "#E05C15",
-    shortDescription: "Authentic Pochampally pattu skirt & blouse. ₹2,200",
-    description:
-      "Authentic Pochampally pattu skirt and blouse set in vibrant orange with a rich purple woven border. Traditional Pochampally ikat weave with intricate gold motifs — perfect for festive occasions, classical dance performances and family celebrations.",
-    fabric: "Pure Pochampally Pattu (Silk)",
-    care: "Dry clean recommended",
-    sizes: ["8-10Y"],
-    images: img(pochampallySkirBlouse810),
-    stockNote: "Quantity 1 available",
-  },
 
   {
     id: "p40",
@@ -953,26 +910,7 @@ export const products: Product[] = [
     images: img(premiumRedTraditionalDress),
   },
 
-  {
-    id: "p48",
-    slug: "elegant-green-red-ethnic-party-wear-dress-girls",
-    name: "Elegant Green & Red Ethnic Party Wear Dress",
-    price: 1850,
-    mrp: 2199,
-    category: "baby",
-    ageBuckets: ["0-12m"],
-    ageLabel: "Age: 12–18 months",
-    tag: "Ethnic",
-    badge: "Banarasi",
-    colorChip: "#1A6B3C",
-    shortDescription: "Green Banarasi skirt, red embroidered blouse, frill sleeves. ₹1,850",
-    description:
-      "Make your little princess shine in this beautiful traditional dress featuring a rich green Banarasi-style skirt adorned with intricate gold floral motifs and a luxurious woven border. The vibrant red blouse is highlighted with stunning floral embroidery and stylish layered frill sleeves, creating a festive and elegant look. Perfect for weddings, birthdays, festivals and special events.",
-    fabric: "Premium green jacquard / Banarasi fabric skirt with embroidered red blouse",
-    care: "Dry clean recommended",
-    sizes: ["12-18M"],
-    images: img(elegantGreenRedEthnicDress),
-  },
+
 ];
 
 /** Derive slug segment when router `params.slug` is missing or placeholder (TanStack Start / path edge cases). */
