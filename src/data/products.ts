@@ -43,6 +43,13 @@ import premiumBoysKurthaOliveGreen from "@/assets/premium-boys-ethnic-kurtha-oil
 import premiumBoysKurthaMagenta from "@/assets/premium-boys-ethnic-kurtha-magnetic-pink-fabric.img-3.jpeg";
 import premiumBoysKurthaMustard from "@/assets/premium-boys-ethnic-kurtha-mustarrd-yellow-fabric.img-4.jpeg";
 import comboSet312 from "@/assets/combo-set-3-12.jpeg";
+import pinkPurpleLehenga1 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls .jpeg";
+import pinkPurpleLehenga2 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls -2.jpeg";
+import pinkPurpleLehenga3 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls-3.jpeg";
+import tealGoldBrocadePartyDress from "@/assets/elegant-teal-gold-brocadepary-dress-girls.jpeg";
+import floralGreenPartyDress from "@/assets/floral-green-party-wer-dress-baby-girls-6-1-year.jpeg";
+import pinkFloralPartyDress from "@/assets/elegant-pink-floral-party-wera-dress-girls-2-3.jpeg";
+import floralPrintedLehenga from "@/assets/Floral Printed Top with Light Pink Embroidered Lehenga for Girls.jpeg";
 import premiumRedTraditionalDress from "@/assets/premium-red-traditional-party-wear-dress-girls.jpeg";
 
 export type Category = "baby" | "girls" | "ladies" | "boys";
@@ -910,6 +917,131 @@ export const products: Product[] = [
     images: img(premiumRedTraditionalDress),
   },
 
+  {
+    id: "p48",
+    slug: "adorable-pink-purple-lehenga-baby-girls",
+    name: "Adorable Pink & Purple Traditional Lehenga Set for Baby Girls",
+    price: 2300,
+    mrp: 2699,
+    category: "girls",
+    ageBuckets: ["6-12y"],
+    ageLabel: "Age: 6–7 years",
+    tag: "Lehenga",
+    badge: "Festive",
+    colorChip: "#C04B8A",
+    shortDescription: "Pink blouse, flutter sleeves, purple zari lehenga. ₹2,300",
+    description:
+      "Dress your little princess in this charming ethnic lehenga set, designed to make every celebration extra special. The vibrant pink blouse with stylish flutter sleeves pairs beautifully with the rich purple flared lehenga featuring an elegant zari border. Crafted for comfort and style, it's perfect for your baby's festive wardrobe.\n\n✨ Features:\n• Premium silk-blend fabric\n• Stylish flutter sleeves\n• Soft inner lining for all-day comfort\n• Beautiful flared lehenga with rich zari border\n• Lightweight and baby-friendly\n• Elegant festive look",
+    fabric: "Premium silk-blend with soft inner lining",
+    care: "Dry clean recommended • Handle gently",
+    sizes: ["6-12M", "1-2Y", "2-3Y"],
+    images: [pinkPurpleLehenga1],
+  },
+
+  {
+    id: "p49",
+    slug: "adorable-pink-purple-lehenga-baby-girls-style2",
+    name: "Adorable Pink & Purple Traditional Lehenga Set for Baby Girls 💖",
+    price: 1300,
+    mrp: 1599,
+    category: "baby",
+    ageBuckets: ["1-3y"],
+    ageLabel: "Age: 1–2 years",
+    tag: "Lehenga",
+    badge: "Festive",
+    colorChip: "#A94490",
+    shortDescription: "Pink blouse, flutter sleeves, purple zari lehenga. ₹1,300",
+    description:
+      "Dress your little princess in this charming ethnic lehenga set, designed to make every celebration extra special. The vibrant pink blouse with stylish flutter sleeves pairs beautifully with the rich purple flared lehenga featuring an elegant zari border. Crafted for comfort and style, it's perfect for your baby's festive wardrobe.\n\n✨ Features:\n• Premium silk-blend fabric\n• Stylish flutter sleeves\n• Soft inner lining for all-day comfort\n• Beautiful flared lehenga with rich zari border\n• Lightweight and baby-friendly\n• Elegant festive look",
+    fabric: "Premium silk-blend with soft inner lining",
+    care: "Dry clean recommended • Handle gently",
+    sizes: ["6-12M", "1-2Y", "2-3Y"],
+    images: [pinkPurpleLehenga2, pinkPurpleLehenga3],
+  },
+
+  {
+    id: "p50",
+    slug: "elegant-teal-gold-brocade-party-dress-girls",
+    name: "Elegant Teal & Gold Brocade Party Dress for Girls",
+    price: 1950,
+    mrp: 2299,
+    category: "girls",
+    ageBuckets: ["6-12y"],
+    ageLabel: "Age: 6–7 years",
+    tag: "Party",
+    badge: "Premium",
+    colorChip: "#1A8C8C",
+    shortDescription: "Sweetheart neckline, floral straps, brocade pleated skirt. ₹1,950",
+    description:
+      "Make your little princess shine with this stunning teal and gold brocade party dress. Designed with a stylish sweetheart neckline, unique floral shoulder straps, and a beautifully flared pleated skirt, this outfit offers a rich traditional look with a modern touch. The luxurious woven floral pattern adds elegance, making it perfect for birthdays, weddings, festive celebrations, and special occasions.\n\n✨ Features:\n• Premium brocade fabric with gold floral weaving\n• Stylish sweetheart neckline\n• Designer floral shoulder straps\n• Soft inner lining for comfort\n• Flared pleated skirt for a graceful look\n• Ideal for birthdays, weddings, festivals & party wear",
+    fabric: "Premium brocade with gold floral weaving",
+    care: "Dry clean recommended",
+    sizes: ["6-7Y"],
+    images: img(tealGoldBrocadePartyDress),
+  },
+
+  {
+    id: "p51",
+    slug: "floral-green-party-wear-dress-baby-girls",
+    name: "Floral Green Party Wear Dress for Baby Girls",
+    price: 950,
+    mrp: 1199,
+    category: "baby",
+    ageBuckets: ["0-12m"],
+    ageLabel: "Age: 6 months to 1 year",
+    tag: "Party",
+    badge: "Festive",
+    colorChip: "#3A8C55",
+    shortDescription: "Green floral print, ruffled sleeves, pink bow, golden lace. ₹950",
+    description:
+      "Dress your little princess in this adorable green floral party dress, designed to make every special occasion memorable. Featuring a vibrant floral print, cute ruffled sleeves, a beautiful pink bow at the waist, and an elegant golden lace border, this dress combines style and comfort perfectly.\n\n✨ Features:\n• Soft and comfortable fabric\n• Elegant floral print design\n• Cute ruffled sleeves\n• Stylish pink waist bow\n• Premium golden lace hem\n• Soft inner lining for all-day comfort\n• Perfect for birthdays, festivals, family functions, parties, and photoshoot",
+    fabric: "Soft comfortable fabric with inner lining",
+    care: "Gentle hand wash • Dry in shade",
+    sizes: ["6-12M"],
+    images: img(floralGreenPartyDress),
+  },
+
+  {
+    id: "p52",
+    slug: "elegant-pink-floral-party-wear-dress-girls",
+    name: "Elegant Pink Floral Party Wear Dress for Girls",
+    price: 1250,
+    mrp: 1499,
+    category: "girls",
+    ageBuckets: ["1-3y"],
+    ageLabel: "Age: 2–3 years",
+    tag: "Party",
+    badge: "Festive",
+    colorChip: "#E07A9A",
+    shortDescription: "Sweetheart neckline, puff sleeves, floral embroidered pleated skirt. ₹1,250",
+    description:
+      "Add a touch of elegance to your little princess's wardrobe with this beautiful pink party wear dress. Crafted from premium shiny fabric, it features a stylish sweetheart neckline, trendy puff sleeves, and a beautifully pleated skirt adorned with vibrant floral embroidery. Perfect for festive occasions and celebrations, this dress offers both comfort and style.\n\n✨ Features:\n• Premium satin-finish fabric\n• Elegant sweetheart neckline\n• Stylish puff sleeves\n• Colorful floral embroidered pleated skirt\n• Soft inner lining for all-day comfort\n• Ideal for birthdays, weddings, festivals, parties, and photoshoots\n\nA graceful and eye-catching outfit designed to make your little one shine on every special occasion. 🌸💕",
+    fabric: "Premium satin-finish fabric with inner lining",
+    care: "Gentle hand wash • Cool iron",
+    sizes: ["2-3Y"],
+    images: img(pinkFloralPartyDress),
+  },
+
+  {
+    id: "p53",
+    slug: "floral-printed-top-light-pink-embroidered-lehenga-girls",
+    name: "Floral Printed Top with Light Pink Embroidered Lehenga for Girls",
+    price: 1600,
+    mrp: 1899,
+    category: "girls",
+    ageBuckets: ["3-6y"],
+    ageLabel: "Age: 3–4 years",
+    tag: "Lehenga",
+    badge: "Festive",
+    colorChip: "#D475A0",
+    shortDescription: "Floral printed top, light pink floor-length embroidered lehenga. ₹1,600",
+    description:
+      "Let your little princess shine in this elegant ethnic outfit featuring a beautifully printed floral top paired with a stunning light pink embroidered floor-length lehenga. Designed with vibrant floral motifs, delicate detailing, and a graceful flare, this outfit is perfect for festive celebrations and special occasions.\n\n✨ Features:\n• Premium-quality fabric with soft inner lining\n• Floral printed designer top\n• Elegant light pink floor-length embroidered lehenga\n• Comfortable fit for all-day wear\n• Beautiful festive color combination\n• Ideal for birthdays, weddings, festivals, traditional events, and photoshoots",
+    fabric: "Premium fabric with soft inner lining",
+    care: "Dry clean recommended",
+    sizes: ["3-4Y"],
+    images: img(floralPrintedLehenga),
+  },
 
 ];
 

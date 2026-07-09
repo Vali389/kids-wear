@@ -99,8 +99,17 @@ export function Footer() {
             <p className="inline-flex items-center gap-1">
               Made with <Heart className="h-3.5 w-3.5 fill-berry text-berry" /> for little ones
             </p>
-            <p className="text-[10px] text-muted-foreground/80">
-              Developed by Babu (<a href="tel:9014084396" className="hover:text-foreground">9014084396</a>)
+            <p className="text-xs font-bold text-foreground/90">
+              Website Developed by{" "}
+              <a
+                href="tel:9014084396"
+                className="text-primary hover:underline"
+              >
+                Babu — 9014084396
+              </a>
+            </p>
+            <p className="text-[10px] text-muted-foreground/70">
+              For website development contact the above number
             </p>
           </div>
         </div>
