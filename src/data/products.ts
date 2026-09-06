@@ -1,31 +1,18 @@
 import purpleChunkyBaby from "@/assets/Elegant chumky purple baby frock12-18.jpeg";
-import greenMustardBaby from "@/assets/Adorable green and mustard baby frock 3-6.jpeg";
-import navyAnkleFrock from "@/assets/Elegant ankle-length navy blue frock featuring rich 1-2.jpeg";
 import cuteFloral23 from "@/assets/Cute and elegant floral frock 2-3.jpeg";
 import lavenderFloral23 from "@/assets/Beautiful lavender floral frock with elegant2-3.jpeg";
 import pinkLong810 from "@/assets/Beautiful long frock featuring a stylish pink8-10.jpeg";
-import peachFloral23 from "@/assets/Elegant peach floral frock with a soft 2-3.jpeg";
-import whiteParty34 from "@/assets/Elegant white party frock3-4.jpeg";
 import tealLehenga34 from "@/assets/Elegant teal lehenga set featuring intricate golden .jpeg";
 import orangeLehenga67 from "@/assets/Beautiful orange lehenga featuring vibrant6-7.jpeg";
-import creamFrock2 from "@/assets/Elegant cream frock featuring delicate floral embroidery2.jpeg";
 import ivoryBaby12 from "@/assets/Elegant ivory baby frock featuring intricate silver1-2.jpeg";
 import greyFloral34 from "@/assets/Charming floral frock in a soft grey tone3-4.jpeg";
 import redPartyBlack45 from "@/assets/Stylish red party frock featuring a rich black4-5.jpeg";
 import pastelBlue45 from "@/assets/Elegant pastel blue party frock4-5.jpeg";
-import yellowLehengaMulti from "@/assets/Beautiful lehenga set featuring a vibrant yellow3-4,4-5,5-6,6-8.jpeg";
 import mustardDress56 from "@/assets/This brightmustratdyellowdress5-6.jpeg";
 import blackLehenga1214 from "@/assets/This elegant lehenga set will have a graceful, slightly flared fit with a traditional touch12-14.jpeg";
-import yellowLongGownLadies from "@/assets/Elegant yellow long gown featuring a flattering V-neck and full sleeves25-30.jpeg";
-import twinsPochampally from "@/assets/Elegant Pochampally pattu twinning outfit featuring a rich deep purple.jpeg";
-import momBabyTwinPurple from "@/assets/Elegant mom & baby boy twinning outfit set in rich royal purpleallagegroups.jpeg";
-import babyBoyPurple from "@/assets/Elegant baby boy traditional outfit featuring a rich purple.jpeg";
-import lehengaMaggam18 from "@/assets/Beautiful traditional lehenga set  features a flared skirt 1-8.jpeg";
 import brightMaroonEthnic12 from "@/assets/brightand maroonethinicfrock1-2.jpeg";
 import adorablePinkPartyFloral from "@/assets/adorablepink partywith fleoral.jpeg";
-import royalPinkEthnic918 from "@/assets/brightroyaland pinkethinicfrock9-18.jpeg";
 import ethnicFrockKids from "@/assets/elegantethenic frockkids.jpeg";
-import greenFestiveLehenga67 from "@/assets/elegantgerreenforallehanga6-7.jpeg";
 import redFestiveGown1012 from "@/assets/elegantredfetsivegown10-12.jpeg";
 import richMaroonEthnic918 from "@/assets/elangantrichmaroonandtraditoonlfrock9-18.jpeg";
 import vibrantPinkTraditional15 from "@/assets/adorablevibarantpinkand golsdtarditionalfrock1-5.jpeg";
@@ -33,23 +20,10 @@ import navyColorful1218 from "@/assets/Vibrant navy blue frock adorned with colo
 import partywearFrock34 from "@/assets/partywaerfrock3-4.jpeg";
 import partywearFrock342 from "@/assets/partywaerfrock3-4-2.jpeg";
 import partyLongFrock1215 from "@/assets/partywearlongfrog12-15.jpeg";
-import mustardLongFrock1015 from "@/assets/eleganntmutsarrdyeloowlongfronk10-15.jpeg";
-import girlsSpotlightHero from "@/assets/girls-herosectionew-1.jpeg";
-import panchesPaijamaNB2 from "@/assets/panche-paijama-set-new-born-2.jpeg";
 import pureBanarisiPanchePaijama from "@/assets/pure-banarasi-panchepaijamaset-newborn-2.jpeg";
 import pureBanarisiPanchePaijama2 from "@/assets/pure-banarasi-panchepaijamaset-newborn-img-2.jpeg";
-import premiumBoysKurthaPurple from "@/assets/premium-boys-ethnic-kurtha-rich-purple-fabric.img-1.jpeg";
-import premiumBoysKurthaOliveGreen from "@/assets/premium-boys-ethnic-kurtha-oilgreenwithgold-zari-fabric.img-2.jpeg";
-import premiumBoysKurthaMagenta from "@/assets/premium-boys-ethnic-kurtha-magnetic-pink-fabric.img-3.jpeg";
-import premiumBoysKurthaMustard from "@/assets/premium-boys-ethnic-kurtha-mustarrd-yellow-fabric.img-4.jpeg";
-import comboSet312 from "@/assets/combo-set-3-12.jpeg";
 import pinkPurpleLehenga1 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls .jpeg";
-import pinkPurpleLehenga2 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls -2.jpeg";
-import pinkPurpleLehenga3 from "@/assets/Adorable Pink & Purple Traditional Lehenga Set for Baby Girls-3.jpeg";
-import tealGoldBrocadePartyDress from "@/assets/elegant-teal-gold-brocadepary-dress-girls.jpeg";
-import floralGreenPartyDress from "@/assets/floral-green-party-wer-dress-baby-girls-6-1-year.jpeg";
 import pinkFloralPartyDress from "@/assets/elegant-pink-floral-party-wera-dress-girls-2-3.jpeg";
-import floralPrintedLehenga from "@/assets/Floral Printed Top with Light Pink Embroidered Lehenga for Girls.jpeg";
 import premiumRedTraditionalDress from "@/assets/premium-red-traditional-party-wear-dress-girls.jpeg";
 
 export type Category = "baby" | "girls" | "ladies" | "boys";
@@ -85,44 +59,9 @@ const img = (src: string): string[] => [src, src];
 /** Kathyayani Kids Wear — catalog with photos mapped to `src/assets` filenames */
 export const products: Product[] = [
 
-  {
-    id: "p2",
-    slug: "adorable-green-mustard-baby-frock",
-    name: "Adorable green & mustard baby frock",
-    price: 250,
-    mrp: 550,
-    category: "baby",
-    ageBuckets: ["0-12m"],
-    ageLabel: "Age: 3–6 months",
-    tag: "Baby",
-    colorChip: "var(--mint)",
-    shortDescription: "Flared skirt, tie-up straps. ₹250",
-    description:
-      "Adorable green and mustard baby frock with a soft flared skirt and delicate detailing at the waist. Cute tie-up straps for a comfortable fit — perfect for babies for special occasions.",
-    fabric: "Soft breathable cotton blend",
-    care: "Gentle hand wash • Dry in shade",
-    sizes: ["3-6M"],
-    images: img(greenMustardBaby),
-  },
-  {
-    id: "p3",
-    slug: "elegant-navy-ankle-baby-frock",
-    name: "Elegant ankle-length navy blue frock",
-    price: 370,
-    mrp: 495,
-    category: "baby",
-    ageBuckets: ["1-3y"],
-    ageLabel: "Age: 1–2 years",
-    tag: "Baby",
-    colorChip: "var(--sky)",
-    shortDescription: "Floral prints, red bow, puff sleeves. ₹370",
-    description:
-      "Elegant ankle-length navy blue frock featuring rich floral prints and a stylish red bow at the waist. Cute puff sleeves and a comfortable fit — ideal for festive occasions.",
-    fabric: "Lightweight woven with soft lining",
-    care: "Gentle hand wash • Cool iron",
-    sizes: ["1-2Y"],
-    images: img(navyAnkleFrock),
-  },
+
+
+
   {
     id: "p4",
     slug: "cute-elegant-floral-frock-2-3",
@@ -181,44 +120,7 @@ export const products: Product[] = [
     sizes: ["8-10Y"],
     images: img(pinkLong810),
   },
-  {
-    id: "p7",
-    slug: "elegant-peach-floral-frock",
-    name: "Elegant peach floral frock",
-    price: 850,
-    mrp: 999,
-    category: "girls",
-    ageBuckets: ["1-3y"],
-    ageLabel: "Age: 2–3 years",
-    tag: "Festive",
-    colorChip: "var(--sunshine)",
-    shortDescription: "Multicolor border, shoulder straps. ₹850",
-    description:
-      "Elegant peach floral frock with a soft flared silhouette and delicate multicolor border. Comfortable shoulder straps — below-knee length for parties and festive wear.",
-    fabric: "Cotton blend with woven border",
-    care: "Gentle hand wash • Cool iron",
-    sizes: ["2-3Y"],
-    images: img(peachFloral23),
-  },
-  {
-    id: "p8",
-    slug: "elegant-white-party-frock",
-    name: "Elegant white party frock",
-    price: 1175,
-    mrp: 1475,
-    category: "girls",
-    ageBuckets: ["3-6y"],
-    ageLabel: "Age: 3–4 years",
-    tag: "Party",
-    colorChip: "var(--cream)",
-    shortDescription: "Silver floral embroidery, net skirt, bow. ₹1,175",
-    description:
-      "Elegant white party frock with intricate silver floral embroidery and a soft flared net skirt. Delicate puff sleeves and bow at the waist — ideal for birthdays and weddings.",
-    fabric: "Net / embroidered bodice with lining",
-    care: "Dry clean recommended • Gentle spot clean",
-    sizes: ["3-4Y"],
-    images: img(whiteParty34),
-  },
+
   {
     id: "p9",
     slug: "elegant-teal-lehenga-set",
@@ -257,25 +159,7 @@ export const products: Product[] = [
     sizes: ["6-7Y"],
     images: img(orangeLehenga67),
   },
-  {
-    id: "p11",
-    slug: "elegant-cream-floral-frock",
-    name: "Elegant cream frock",
-    price: 959,
-    mrp: 1200,
-    category: "girls",
-    ageBuckets: ["1-3y"],
-    ageLabel: "Age: 2 years",
-    tag: "Party",
-    colorChip: "var(--cream)",
-    shortDescription: "Floral embroidery, ruffled sleeves. ₹959",
-    description:
-      "Elegant cream frock with delicate floral embroidery, soft flared skirt and stylish ruffled sleeves — birthdays, parties and special occasions.",
-    fabric: "Embroidered bodice with soft skirt",
-    care: "Gentle hand wash • Line dry",
-    sizes: ["2Y"],
-    images: img(creamFrock2),
-  },
+
   {
     id: "p12",
     slug: "elegant-ivory-baby-frock",
@@ -352,25 +236,7 @@ export const products: Product[] = [
     sizes: ["4-5Y"],
     images: img(pastelBlue45),
   },
-  {
-    id: "p16",
-    slug: "beautiful-yellow-lehenga-multi-size",
-    name: "Beautiful yellow lehenga set",
-    price: 1150,
-    mrp: 1499,
-    category: "girls",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 3–4, 4–5, 5–6 & 6–8 years",
-    tag: "Lehenga",
-    colorChip: "var(--sunshine)",
-    shortDescription: "Traditional prints, floral blouse, dupatta. Starts at ₹1,150",
-    description:
-      "Beautiful lehenga set with a vibrant yellow flared skirt, intricate traditional prints and a colourful floral blouse. Soft dupatta for an elegant touch — weddings and celebrations. Price by size: 3–4Y ₹1,150 • 4–5Y ₹1,300 • 5–6Y ₹1,450 • 6–8Y ₹1,600.",
-    fabric: "Premium festive fabric",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-8Y"],
-    images: img(yellowLehengaMulti),
-  },
+
   {
     id: "p18",
     slug: "bright-mustard-yellow-party-dress",
@@ -409,105 +275,7 @@ export const products: Product[] = [
     sizes: ["12-14Y"],
     images: img(blackLehenga1214),
   },
-  {
-    id: "p20",
-    slug: "elegant-yellow-long-gown-ladies",
-    name: "Elegant yellow long gown",
-    price: 2250,
-    mrp: 2699,
-    category: "ladies",
-    ageBuckets: ["ladies"],
-    ageLabel: "Age: 25–30 years",
-    tag: "Ladies",
-    badge: "Women",
-    colorChip: "var(--sunshine)",
-    shortDescription: "V-neck, full sleeves, traditional hem motifs. ₹2,250",
-    description:
-      "Elegant yellow long gown with flattering V-neck and full sleeves with delicate embellishments. Flowing skirt with intricate traditional motifs at the hem — special occasions and ethnic events.",
-    fabric: "Premium drape fabric",
-    care: "Dry clean recommended",
-    sizes: ["25-30Y"],
-    images: img(yellowLongGownLadies),
-  },
-  {
-    id: "p21",
-    slug: "elegant-pochampally-twinning-set",
-    name: "Elegant Pochampally twinning set",
-    price: 3000,
-    mrp: 3499,
-    category: "girls",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 4–7 years",
-    tag: "Twinning",
-    colorChip: "var(--lavender)",
-    shortDescription: "Silk-look twin: boy panche & girl frock. ₹3,000",
-    description:
-      "Elegant twinning collection in rich maroon with gold motifs — coordinated baby boy panche pajama set and baby girl long frock. Traditional craftsmanship with a modern touch for celebrations.",
-    fabric: "Silk / silk-touch with woven borders",
-    care: "Dry clean recommended",
-    sizes: ["4-5Y", "5-6Y", "6-7Y"],
-    images: img(twinsPochampally),
-  },
-  {
-    id: "p22",
-    slug: "mom-baby-boy-twinning-purple",
-    name: "Mom & baby boy twinning — royal purple",
-    price: 4500,
-    mrp: 4999,
-    category: "ladies",
-    ageBuckets: ["ladies", "0-12m", "1-3y", "3-6y", "6-12y", "12plus"],
-    ageLabel: "Ages: coordinated sets (all age groups)",
-    tag: "Twinning",
-    badge: "Set",
-    colorChip: "var(--lavender)",
-    shortDescription: "Mom long frock + baby panche pajama. ₹4,500",
-    description:
-      "Elegant mom & baby boy twinning in rich royal purple. Mom's long frock with flowy silhouette and woven border; baby boy panche pajama with matching kurta. Festivals and special family moments — WhatsApp for size pairing.",
-    fabric: "Traditional weave with coordinated trims",
-    care: "Dry clean recommended",
-    sizes: ["Custom / WhatsApp"],
-    images: img(momBabyTwinPurple),
-    stockNote: "Paired sizing — message us on WhatsApp",
-  },
-  {
-    id: "p23",
-    slug: "elegant-baby-boy-purple-kurta-panche",
-    name: "Elegant baby boy kurta & panche",
-    price: 1450,
-    mrp: 1699,
-    category: "boys",
-    ageBuckets: ["1-3y", "3-6y"],
-    ageLabel: "Ages: 1–5 years",
-    tag: "Boys",
-    colorChip: "var(--lavender)",
-    shortDescription: "Purple kurta, cream panche with border. ₹1,450",
-    description:
-      "Elegant baby boy traditional outfit: rich purple kurta with subtle gold motifs and detailed neckline. Classic panche pajama in contrasting cream with woven border — festivals and ceremonies.",
-    fabric: "Cotton / silk-touch blend",
-    care: "Gentle hand wash • Line dry",
-    sizes: ["1-2Y", "2-3Y", "3-4Y", "4-5Y"],
-    images: img(babyBoyPurple),
-  },
-  {
-    id: "p24",
-    slug: "beautiful-traditional-lehenga-maggam",
-    name: "Beautiful traditional lehenga set",
-    price: 1999,
-    mrp: 2399,
-    category: "girls",
-    ageBuckets: ["0-12m", "1-3y", "3-6y", "6-12y"],
-    ageLabel: "Age: 1–8 years",
-    tag: "Lehenga",
-    badge: "Maggam work",
-    colorChip: "var(--peach)",
-    shortDescription: "Zari skirt, maggam blouse, bow waist. ₹1,999",
-    description:
-      "Beautiful traditional lehenga: flared skirt with elegant zari motifs and broad gold border, maggam work blouse with floral embroidery and puff sleeves, bow at the waist. Premium fabric for weddings and celebrations.",
-    fabric: "Premium festive fabric with zari",
-    care: "Dry clean recommended",
-    sizes: ["1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y"],
-    images: img(lehengaMaggam18),
-  },
+
 
   {
     id: "p26",
@@ -528,25 +296,7 @@ export const products: Product[] = [
     sizes: ["3-4Y", "4-5Y", "5-6Y"],
     images: img(adorablePinkPartyFloral),
   },
-  {
-    id: "p27",
-    slug: "royal-pink-ethnic-frock-9-18",
-    name: "Royal pink ethnic frock",
-    price: 900,
-    mrp: 1199,
-    category: "girls",
-    ageBuckets: ["0-12m", "1-3y"],
-    ageLabel: "Age: 9–18 months",
-    tag: "Ethnic",
-    colorChip: "var(--lavender)",
-    shortDescription: "Royal pink draped ethnic look. ₹900",
-    description:
-      "Bright royal and pink ethnic frock with a graceful swirl-friendly skirt — ceremonies, weddings and milestone photos.",
-    fabric: "Traditional festive blend",
-    care: "Dry clean recommended",
-    sizes: ["9-18M"],
-    images: img(royalPinkEthnic918),
-  },
+
   {
     id: "p28",
     slug: "elegant-kids-ethnic-frock",
@@ -566,25 +316,7 @@ export const products: Product[] = [
     sizes: ["3-4Y", "5-6Y", "7-8Y"],
     images: img(ethnicFrockKids),
   },
-  {
-    id: "p29",
-    slug: "elegant-green-festive-lehenga-6-7",
-    name: "Elegant green festive lehenga",
-    price: 1400,
-    mrp: 1699,
-    category: "girls",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Age: 6–7 years (nearby sizes available)",
-    tag: "Lehenga",
-    colorChip: "var(--mint)",
-    shortDescription: "Jewel-tone green skirt set. ₹1,400",
-    description:
-      "Elegant green lehenga with rich festive contrast — birthdays, engagements and festive evenings.",
-    fabric: "Premium festive drape",
-    care: "Dry clean recommended",
-    sizes: ["6-7Y", "7-8Y"],
-    images: img(greenFestiveLehenga67),
-  },
+
   {
     id: "p30",
     slug: "elegant-red-festive-gown-10-12",
@@ -701,70 +433,6 @@ export const products: Product[] = [
     images: img(partyLongFrock1215),
   },
   {
-    id: "p37",
-    slug: "elegant-mustard-long-frock-10-15",
-    name: "Elegant mustard yellow long frock",
-    price: 1699,
-    mrp: 1949,
-    category: "girls",
-    ageBuckets: ["6-12y", "12plus"],
-    ageLabel: "Ages: 10–15 years",
-    tag: "Party",
-    colorChip: "var(--sunshine)",
-    shortDescription: "Long mustard drape — teen-friendly gala look. ₹1,699",
-    description:
-      "Elegant long frock in a warm mustard story — flattering length for juniors and teens, breathable lining for long celebrations.",
-    fabric: "Festive drape fabric with lining",
-    care: "Dry clean recommended",
-    sizes: ["10Y", "11Y", "12Y", "13Y", "14Y", "15Y"],
-    images: img(mustardLongFrock1015),
-  },
-  {
-    id: "p38",
-    slug: "girls-celebration-spotlight-frock",
-    name: "Girls celebration frock — spotlight edit",
-    price: 1399,
-    mrp: 1599,
-    category: "girls",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Girls sizing — message us on WhatsApp",
-    tag: "Party",
-    colorChip: "var(--lavender)",
-    shortDescription: "Featured studio styling from our celebration shoot. ₹1,399",
-    description:
-      "From our celebration edit shoot — airy silhouette and sparkle that reads beautifully on camera. Confirm available sizes on WhatsApp before ordering.",
-    fabric: "Light festive weave with comfy lining",
-    care: "Gentle hand wash • Dry in shade",
-    sizes: ["4-5Y", "6-7Y", "8-9Y", "10-11Y"],
-    images: img(girlsSpotlightHero),
-  },
-
-  // ── NEW PRODUCTS ─────────────────────────────────────────────────────────────
-
-
-  {
-    id: "p40",
-    slug: "panche-paijama-set-newborn-2-years",
-    name: "Panche Paijama Set — Newborn to 2 Years",
-    price: 950,
-    mrp: 1199,
-    category: "boys",
-    ageBuckets: ["0-12m", "1-3y"],
-    ageLabel: "Age: Newborn to 2 years",
-    tag: "Boys",
-    badge: "Festive",
-    colorChip: "#4B3F9E",
-    shortDescription: "Traditional panche paijama for baby boys. ₹950",
-    description:
-      "Adorable traditional panche paijama set for baby boys from newborn to 2 years. Features a rich purple kurta with intricate gold floral brocade all over and a classic ivory dhoti-style panche with gold border — perfect for naming ceremonies, festivals and family celebrations.",
-    fabric: "Premium Brocade / Silk Blend",
-    care: "Dry clean recommended • Handle gently",
-    sizes: ["Newborn", "0-6M", "6-12M", "1-2Y"],
-    images: img(panchesPaijamaNB2),
-    stockNote: "Quantity 1 available",
-  },
-
-  {
     id: "p41",
     slug: "pure-banarasi-panche-paijama-newborn-2-years",
     name: "Pure Banarasi Panche Paijama Set",
@@ -783,116 +451,6 @@ export const products: Product[] = [
     care: "Dry clean only",
     sizes: ["Newborn", "0-6M", "6-12M", "1-2Y"],
     images: [pureBanarisiPanchePaijama, pureBanarisiPanchePaijama2],
-    stockNote: "Quantity 1 available",
-  },
-
-  {
-    id: "p42",
-    slug: "premium-boys-ethnic-kurtha-royal-purple",
-    name: "Premium Boys Ethnic Kurta — Royal Purple",
-    price: 350,
-    mrp: 599,
-    category: "boys",
-    ageBuckets: ["1-3y", "3-6y", "6-12y"],
-    ageLabel: "Ages: 1–8 years",
-    tag: "Boys",
-    badge: "Premium",
-    colorChip: "#7B3FA0",
-    shortDescription: "Peacock & lotus print kurta in royal purple. From ₹350",
-    description:
-      "Premium boys ethnic kurta crafted from rich purple fabric featuring elegant peacock and lotus floral motifs throughout. Traditional border detailing and mandarin collar for a regal festive look. Perfect for weddings, festivals and traditional celebrations. Price by size: 1–2Y ₹350 • 3–4Y ₹550 • 4–5Y ₹700 • 5–6Y ₹850 • 6–7Y ₹1,000 • 7–8Y ₹1,150.",
-    fabric: "Cotton Blend",
-    care: "Gentle hand wash • Dry in shade",
-    sizes: ["1-2Y", "3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y"],
-    images: img(premiumBoysKurthaPurple),
-    stockNote: "Quantity 1 available",
-  },
-
-  {
-    id: "p43",
-    slug: "premium-boys-ethnic-kurtha-olive-green-gold-zari",
-    name: "Premium Boys Ethnic Kurta — Olive Green & Gold Zari",
-    price: 400,
-    mrp: 699,
-    category: "boys",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 3–12 years",
-    tag: "Boys",
-    badge: "Premium",
-    colorChip: "#6B7A2A",
-    shortDescription: "Woven gold zari motifs on olive green silk blend. From ₹400",
-    description:
-      "Premium boys ethnic kurta in rich olive green with gold zari featuring traditional woven zari motifs and a rich gold zari woven border. Mandarin collar and full sleeves for a distinguished festive look. Perfect for weddings, festivals, religious ceremonies and special celebrations. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
-    fabric: "Premium Silk Blend",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
-    images: img(premiumBoysKurthaOliveGreen),
-    stockNote: "Quantity 1 available",
-  },
-
-  {
-    id: "p44",
-    slug: "premium-boys-ethnic-kurtha-magenta-pink",
-    name: "Premium Boys Ethnic Kurta — Magenta Pink",
-    price: 400,
-    mrp: 699,
-    category: "boys",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 3–12 years",
-    tag: "Boys",
-    badge: "Premium",
-    colorChip: "#C0106A",
-    shortDescription: "Checkered weave with embroidered motifs in magenta pink. From ₹400",
-    description:
-      "Premium boys ethnic kurta in striking magenta pink with a checkered weave and embroidered motifs throughout. Traditional zari-woven border and mandarin collar for a bold festive statement. Ideal for weddings, festivals, traditional functions and family celebrations. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
-    fabric: "Premium Silk Blend / Jacquard",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
-    images: img(premiumBoysKurthaMagenta),
-    stockNote: "Quantity 1 available",
-  },
-
-  {
-    id: "p45",
-    slug: "premium-boys-ethnic-kurtha-mustard-yellow",
-    name: "Premium Boys Ethnic Kurta — Mustard Yellow",
-    price: 400,
-    mrp: 699,
-    category: "boys",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 3–12 years",
-    tag: "Boys",
-    badge: "Premium",
-    colorChip: "#D4860A",
-    shortDescription: "Embroidered motifs & heritage border on mustard yellow. From ₹400",
-    description:
-      "Premium boys ethnic kurta in warm mustard yellow with embroidered motifs and a heritage-inspired border design featuring camel and palm tree folk art patterns. Mandarin collar and full sleeves for a rich traditional look. Perfect for weddings, festivals, cultural celebrations and traditional functions. Price by size: 3–4Y ₹400 • 4–5Y ₹550 • 5–6Y ₹700 • 6–7Y ₹850 • 7–8Y ₹1,000 • 8–9Y ₹1,150 • 9–10Y ₹1,300 • 10–11Y ₹1,450 • 11–12Y ₹1,600.",
-    fabric: "Premium Silk Blend",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
-    images: img(premiumBoysKurthaMustard),
-    stockNote: "Quantity 1 available",
-  },
-
-  {
-    id: "p46",
-    slug: "combo-set-boys-girls-ethnic-3-12",
-    name: "Combo Set — Boys & Girls Ethnic Wear",
-    price: 1400,
-    mrp: 1799,
-    category: "boys",
-    ageBuckets: ["3-6y", "6-12y"],
-    ageLabel: "Ages: 3–12 years",
-    tag: "Combo",
-    badge: "Combo Set",
-    colorChip: "#D4860A",
-    shortDescription: "Matching ethnic combo set for boys & girls. From ₹1,400",
-    description:
-      "Beautiful matching ethnic combo set featuring a mustard yellow boys kurta with heritage folk embroidery and a coordinating girls lehenga skirt & blouse with floral embroidered top. Perfect for sibling twinning at weddings, festivals and family celebrations. Price by size: 3–4Y ₹1,400 • 4–5Y ₹1,550 • 5–6Y ₹1,700 • 6–7Y ₹1,850 • 7–8Y ₹2,000 • 8–9Y ₹2,150 • 9–10Y ₹2,300 • 10–11Y ₹2,450 • 11–12Y ₹2,600.",
-    fabric: "Premium Silk Blend",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y", "10-11Y", "11-12Y"],
-    images: img(comboSet312),
     stockNote: "Quantity 1 available",
   },
 
@@ -929,76 +487,13 @@ export const products: Product[] = [
     tag: "Lehenga",
     badge: "Festive",
     colorChip: "#C04B8A",
-    shortDescription: "Pink blouse, flutter sleeves, purple zari lehenga. ₹2,300",
+    shortDescription: "Purple bodice, flutter sleeves, pink zari lehenga. ₹2,300",
     description:
-      "Dress your little princess in this charming ethnic lehenga set, designed to make every celebration extra special. The vibrant pink blouse with stylish flutter sleeves pairs beautifully with the rich purple flared lehenga featuring an elegant zari border. Crafted for comfort and style, it's perfect for your baby's festive wardrobe.\n\n✨ Features:\n• Premium silk-blend fabric\n• Stylish flutter sleeves\n• Soft inner lining for all-day comfort\n• Beautiful flared lehenga with rich zari border\n• Lightweight and baby-friendly\n• Elegant festive look",
+      "Dress your little princess in this charming ethnic lehenga set, designed to make every celebration extra special. The rich purple bodice with stylish flutter sleeves pairs beautifully with the vibrant pink flared lehenga featuring an elegant gold zari border. Crafted for comfort and style, it's perfect for your baby's festive wardrobe.\n\n✨ Features:\n• Premium silk-blend fabric\n• Stylish flutter sleeves\n• Soft inner lining for all-day comfort\n• Beautiful flared lehenga with rich gold zari border\n• Lightweight and baby-friendly\n• Elegant festive look",
     fabric: "Premium silk-blend with soft inner lining",
     care: "Dry clean recommended • Handle gently",
     sizes: ["6-12M", "1-2Y", "2-3Y"],
     images: [pinkPurpleLehenga1],
-  },
-
-  {
-    id: "p49",
-    slug: "adorable-pink-purple-lehenga-baby-girls-style2",
-    name: "Adorable Pink & Purple Traditional Lehenga Set for Baby Girls 💖",
-    price: 1300,
-    mrp: 1599,
-    category: "baby",
-    ageBuckets: ["1-3y"],
-    ageLabel: "Age: 1–2 years",
-    tag: "Lehenga",
-    badge: "Festive",
-    colorChip: "#A94490",
-    shortDescription: "Pink blouse, flutter sleeves, purple zari lehenga. ₹1,300",
-    description:
-      "Dress your little princess in this charming ethnic lehenga set, designed to make every celebration extra special. The vibrant pink blouse with stylish flutter sleeves pairs beautifully with the rich purple flared lehenga featuring an elegant zari border. Crafted for comfort and style, it's perfect for your baby's festive wardrobe.\n\n✨ Features:\n• Premium silk-blend fabric\n• Stylish flutter sleeves\n• Soft inner lining for all-day comfort\n• Beautiful flared lehenga with rich zari border\n• Lightweight and baby-friendly\n• Elegant festive look",
-    fabric: "Premium silk-blend with soft inner lining",
-    care: "Dry clean recommended • Handle gently",
-    sizes: ["6-12M", "1-2Y", "2-3Y"],
-    images: [pinkPurpleLehenga2, pinkPurpleLehenga3],
-  },
-
-  {
-    id: "p50",
-    slug: "elegant-teal-gold-brocade-party-dress-girls",
-    name: "Elegant Teal & Gold Brocade Party Dress for Girls",
-    price: 1950,
-    mrp: 2299,
-    category: "girls",
-    ageBuckets: ["6-12y"],
-    ageLabel: "Age: 6–7 years",
-    tag: "Party",
-    badge: "Premium",
-    colorChip: "#1A8C8C",
-    shortDescription: "Sweetheart neckline, floral straps, brocade pleated skirt. ₹1,950",
-    description:
-      "Make your little princess shine with this stunning teal and gold brocade party dress. Designed with a stylish sweetheart neckline, unique floral shoulder straps, and a beautifully flared pleated skirt, this outfit offers a rich traditional look with a modern touch. The luxurious woven floral pattern adds elegance, making it perfect for birthdays, weddings, festive celebrations, and special occasions.\n\n✨ Features:\n• Premium brocade fabric with gold floral weaving\n• Stylish sweetheart neckline\n• Designer floral shoulder straps\n• Soft inner lining for comfort\n• Flared pleated skirt for a graceful look\n• Ideal for birthdays, weddings, festivals & party wear",
-    fabric: "Premium brocade with gold floral weaving",
-    care: "Dry clean recommended",
-    sizes: ["6-7Y"],
-    images: img(tealGoldBrocadePartyDress),
-  },
-
-  {
-    id: "p51",
-    slug: "floral-green-party-wear-dress-baby-girls",
-    name: "Floral Green Party Wear Dress for Baby Girls",
-    price: 950,
-    mrp: 1199,
-    category: "baby",
-    ageBuckets: ["0-12m"],
-    ageLabel: "Age: 6 months to 1 year",
-    tag: "Party",
-    badge: "Festive",
-    colorChip: "#3A8C55",
-    shortDescription: "Green floral print, ruffled sleeves, pink bow, golden lace. ₹950",
-    description:
-      "Dress your little princess in this adorable green floral party dress, designed to make every special occasion memorable. Featuring a vibrant floral print, cute ruffled sleeves, a beautiful pink bow at the waist, and an elegant golden lace border, this dress combines style and comfort perfectly.\n\n✨ Features:\n• Soft and comfortable fabric\n• Elegant floral print design\n• Cute ruffled sleeves\n• Stylish pink waist bow\n• Premium golden lace hem\n• Soft inner lining for all-day comfort\n• Perfect for birthdays, festivals, family functions, parties, and photoshoot",
-    fabric: "Soft comfortable fabric with inner lining",
-    care: "Gentle hand wash • Dry in shade",
-    sizes: ["6-12M"],
-    images: img(floralGreenPartyDress),
   },
 
   {
@@ -1020,27 +515,6 @@ export const products: Product[] = [
     care: "Gentle hand wash • Cool iron",
     sizes: ["2-3Y"],
     images: img(pinkFloralPartyDress),
-  },
-
-  {
-    id: "p53",
-    slug: "floral-printed-top-light-pink-embroidered-lehenga-girls",
-    name: "Floral Printed Top with Light Pink Embroidered Lehenga for Girls",
-    price: 1600,
-    mrp: 1899,
-    category: "girls",
-    ageBuckets: ["3-6y"],
-    ageLabel: "Age: 3–4 years",
-    tag: "Lehenga",
-    badge: "Festive",
-    colorChip: "#D475A0",
-    shortDescription: "Floral printed top, light pink floor-length embroidered lehenga. ₹1,600",
-    description:
-      "Let your little princess shine in this elegant ethnic outfit featuring a beautifully printed floral top paired with a stunning light pink embroidered floor-length lehenga. Designed with vibrant floral motifs, delicate detailing, and a graceful flare, this outfit is perfect for festive celebrations and special occasions.\n\n✨ Features:\n• Premium-quality fabric with soft inner lining\n• Floral printed designer top\n• Elegant light pink floor-length embroidered lehenga\n• Comfortable fit for all-day wear\n• Beautiful festive color combination\n• Ideal for birthdays, weddings, festivals, traditional events, and photoshoots",
-    fabric: "Premium fabric with soft inner lining",
-    care: "Dry clean recommended",
-    sizes: ["3-4Y"],
-    images: img(floralPrintedLehenga),
   },
 
 ];

@@ -84,9 +84,12 @@ const HOME_VIEW_MORE_LOADER_MS = 380;
 /** Home spotlight surfaces newest SKU-style ids first (`p36` … `p1`) — shop catalogue order unchanged. */
 function homeSpotlightOrder(list: Product[]): Product[] {
   return [...list].sort((a, b) => {
-    const na = Number(String(a.id).replace(/^p/i, ""));
-    const nb = Number(String(b.id).replace(/^p/i, ""));
-    return (Number.isFinite(nb) ? nb : 0) - (Number.isFinite(na) ? na : 0);
+    const parseId = (id: string) => {
+      const num = Number(String(id).replace(/^p/i, "").replace(/[^0-9.]/g, ""));
+      // IDs with letters (e.g. p49b) → treat as very high so they sort to top
+      return String(id).replace(/^p/i, "").match(/[a-zA-Z]/) ? 99999 : (Number.isFinite(num) ? num : 0);
+    };
+    return parseId(b.id) - parseId(a.id);
   });
 }
 
